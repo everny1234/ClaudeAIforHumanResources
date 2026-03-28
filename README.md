@@ -1,6 +1,3 @@
-# ClaudeAIforHumanResources
-Claude AI course for current and future Human Resources professionals looking to upskill
-<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
