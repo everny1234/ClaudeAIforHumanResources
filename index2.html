@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Claude for HR Professionals — Full Course</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --navy: #1a1a2e;
+  --blue: #0f3460;
+  --gold: #f59e0b;
+  --gold-light: #fbbf24;
+  --green: #10b981;
+  --red: #ef4444;
+  --purple: #6366f1;
+  --cream: #f5f7ff;
+  --warm: #e8eeff;
+  --white: #ffffff;
+  --muted: #4a5568;
+  --text: #1a202c;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'DM Sans',sans-serif; background:#f5f7ff; color:var(--text); }
+
+/* SIDEBAR */
+.layout { display:grid; grid-template-columns:280px 1fr; min-height:100vh; }
+
+.sidebar {
+  background:#162040;
+  position:sticky; top:0; height:100vh;
+  overflow-y:auto; padding:0;
+  display:flex; flex-direction:column;
+}
+
+.sidebar-header {
+  padding:28px 24px 20px;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.sidebar-logo {
+  font-family:'Playfair Display',serif;
+  font-size:15px; font-weight:700;
+  color:var(--white); line-height:1.3;
+  margin-bottom:6px;
+}
+
+.sidebar-sub {
+  font-size:11px; color:rgba(255,255,255,0.4);
+  letter-spacing:1px; text-transform:uppercase;
+}
+
+.progress-bar-wrap {
+  padding:16px 24px;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.progress-label {
+  font-size:11px; color:rgba(255,255,255,0.4);
+  margin-bottom:8px; display:flex; justify-content:space-between;
+}
+
+.progress-bar {
+  height:4px; background:rgba(255,255,255,0.1);
+  border-radius:2px; overflow:hidden;
+}
+
+.progress-fill {
+  height:100%; background:var(--gold);
+  border-radius:2px; transition:width 0.5s ease;
+  width:0%;
+}
+
+.module-nav { padding:12px 0; flex:1; }
+
+.module-nav-item {
+  padding:0;
+  cursor:pointer;
+  border:none; background:none;
+  width:100%; text-align:left;
+}
+
+.module-nav-header {
+  display:flex; align-items:center; gap:12px;
+  padding:12px 24px;
+  transition:background 0.2s;
+}
+
+.module-nav-item:hover .module-nav-header,
+.module-nav-item.active .module-nav-header {
+  background:rgba(255,255,255,0.06);
+}
+
+.module-nav-item.active .module-nav-header {
+  border-left:3px solid var(--gold);
+  padding-left:21px;
+}
+
+.nav-num {
+  width:28px; height:28px;
+  background:rgba(255,255,255,0.08);
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:12px; font-weight:600; color:rgba(255,255,255,0.5);
+  flex-shrink:0; transition:all 0.2s;
+}
+
+.module-nav-item.active .nav-num,
+.module-nav-item.completed .nav-num {
+  background:var(--gold); color:var(--navy);
+}
+
+.module-nav-item.completed .nav-num::after { content:'✓'; }
+
+.nav-info { flex:1; min-width:0; }
+
+.nav-title {
+  font-size:13px; font-weight:500; color:rgba(255,255,255,0.8);
+  line-height:1.3; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+
+.nav-meta {
+  font-size:11px; color:rgba(255,255,255,0.3);
+  margin-top:2px;
+}
+
+.lesson-nav {
+  padding:4px 24px 12px 64px;
+  display:none;
+}
+
+.module-nav-item.active .lesson-nav { display:block; }
+
+.lesson-nav-item {
+  font-size:12px; color:rgba(255,255,255,0.4);
+  padding:5px 0;
+  cursor:pointer;
+  transition:color 0.2s;
+  display:flex; align-items:center; gap:8px;
+}
+
+.lesson-nav-item:hover { color:rgba(255,255,255,0.8); }
+.lesson-nav-item.active { color:var(--gold); }
+.lesson-nav-item::before { content:'·'; font-size:16px; }
+
+/* MAIN CONTENT */
+.main { overflow-y:auto; background:#f5f7ff; }
+
+.module-page { display:none; padding:0; }
+.module-page.active { display:block; }
+
+/* MODULE HEADER */
+.module-header {
+  background:linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+  padding:60px 64px 48px;
+  position:relative; overflow:hidden;
+}
+
+.module-header::before {
+  content:'';
+  position:absolute; inset:0;
+  background:radial-gradient(ellipse at 80% 50%, rgba(245,158,11,0.15), transparent 60%);
+}
+
+.module-eyebrow {
+  font-size:11px; font-weight:600; letter-spacing:3px;
+  text-transform:uppercase; color:var(--gold);
+  margin-bottom:16px; position:relative;
+}
+
+.module-title-main {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(32px,4vw,52px); font-weight:900;
+  color:var(--white); line-height:1.1;
+  margin-bottom:16px; position:relative;
+}
+
+.module-title-main em { font-style:italic; color:var(--gold); }
+
+.module-desc-main {
+  font-size:17px; color:rgba(255,255,255,0.6);
+  line-height:1.65; max-width:600px;
+  position:relative; margin-bottom:32px;
+}
+
+.module-meta-bar {
+  display:flex; gap:32px; flex-wrap:wrap;
+  position:relative;
+}
+
+.meta-pill {
+  display:flex; align-items:center; gap:8px;
+  font-size:13px; color:rgba(255,255,255,0.5);
+}
+
+.meta-pill span { color:rgba(255,255,255,0.9); font-weight:500; }
+
+/* CONTENT BODY */
+.content-body { padding:48px 64px; max-width:900px; }
+
+/* SECTION BLOCKS */
+.section-block { margin-bottom:48px; }
+
+.section-heading {
+  font-family:'Playfair Display',serif;
+  font-size:24px; font-weight:700;
+  color:var(--navy); margin-bottom:20px;
+  display:flex; align-items:center; gap:12px;
+}
+
+.section-heading::after {
+  content:''; flex:1; height:1px;
+  background:var(--warm);
+}
+
+/* OBJECTIVE CARDS */
+.objectives-grid {
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:16px;
+}
+
+.objective-card {
+  background:var(--white);
+  border:1px solid #dde6ff;
+  border-top:3px solid var(--gold);
+  padding:20px;
+  border-radius:4px;
+  box-shadow: 0 1px 4px rgba(15,52,96,0.06);
+}
+
+.objective-icon { font-size:24px; margin-bottom:10px; }
+.objective-title { font-size:14px; font-weight:600; color:var(--navy); margin-bottom:6px; }
+.objective-desc { font-size:13px; color:var(--muted); line-height:1.55; }
+
+/* LESSON CARDS */
+.lesson-card {
+  background:var(--white);
+  border:1px solid #dde6ff;
+  border-radius:4px;
+  margin-bottom:16px;
+  overflow:hidden;
+  box-shadow: 0 1px 4px rgba(15,52,96,0.06);
+}
+
+.lesson-header {
+  display:flex; align-items:center; gap:16px;
+  padding:20px 24px;
+  cursor:pointer;
+  transition:background 0.2s;
+  user-select:none;
+}
+
+.lesson-header:hover { background:#f8faff; }
+
+.lesson-num {
+  width:36px; height:36px;
+  background:linear-gradient(135deg, var(--navy), var(--blue));
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:13px; font-weight:700; color:var(--white);
+  flex-shrink:0;
+}
+
+.lesson-info { flex:1; }
+.lesson-title { font-size:15px; font-weight:600; color:var(--navy); }
+.lesson-duration { font-size:12px; color:var(--muted); margin-top:2px; }
+.lesson-chevron { font-size:12px; color:var(--muted); transition:transform 0.3s; }
+.lesson-card.open .lesson-chevron { transform:rotate(180deg); }
+
+.lesson-body {
+  padding:0 24px;
+  max-height:0; overflow:hidden;
+  transition:max-height 0.4s ease, padding 0.3s;
+}
+
+.lesson-card.open .lesson-body {
+  max-height:2000px;
+  padding:0 24px 24px;
+}
+
+.lesson-content { border-top:1px solid #e8eeff; padding-top:20px; }
+
+.lesson-section-title {
+  font-size:12px; font-weight:600;
+  letter-spacing:1.5px; text-transform:uppercase;
+  color:var(--purple); margin-bottom:12px;
+}
+
+.lesson-text {
+  font-size:14px; color:#334155;
+  line-height:1.8; margin-bottom:16px;
+}
+
+.lesson-points {
+  list-style:none;
+  display:flex; flex-direction:column; gap:10px;
+  margin-bottom:20px;
+}
+
+.lesson-points li {
+  display:flex; align-items:flex-start; gap:10px;
+  font-size:14px; color:#1e293b; line-height:1.6;
+}
+
+.lesson-points li::before {
+  content:'→'; color:var(--gold);
+  font-weight:700; flex-shrink:0; margin-top:1px;
+}
+
+/* SCENARIO EXERCISE */
+.scenario-box {
+  background:linear-gradient(135deg, #1a1a2e, #0f3460);
+  border-radius:4px; padding:32px;
+  margin:24px 0; position:relative; overflow:hidden;
+}
+
+.scenario-box::before {
+  content:'';
+  position:absolute; top:-40px; right:-40px;
+  width:150px; height:150px;
+  background:rgba(245,158,11,0.1);
+  border-radius:50%;
+}
+
+.scenario-label {
+  font-size:10px; font-weight:700;
+  letter-spacing:2px; text-transform:uppercase;
+  color:var(--gold); margin-bottom:12px;
+}
+
+.scenario-title {
+  font-family:'Playfair Display',serif;
+  font-size:20px; font-weight:700;
+  color:var(--white); margin-bottom:12px;
+}
+
+.scenario-desc {
+  font-size:14px; color:rgba(255,255,255,0.65);
+  line-height:1.7; margin-bottom:20px;
+}
+
+.scenario-steps {
+  list-style:none;
+  display:flex; flex-direction:column; gap:10px;
+  margin-bottom:24px;
+}
+
+.scenario-steps li {
+  display:flex; align-items:flex-start; gap:12px;
+  font-size:13px; color:rgba(255,255,255,0.7);
+  line-height:1.5;
+}
+
+.step-num {
+  width:22px; height:22px;
+  background:var(--gold); color:var(--navy);
+  border-radius:50%; display:flex; align-items:center;
+  justify-content:center; font-size:11px; font-weight:700;
+  flex-shrink:0; margin-top:1px;
+}
+
+/* INTERACTIVE PROMPT BUILDER */
+.prompt-builder {
+  background:var(--white);
+  border:1px solid var(--warm);
+  border-radius:4px; overflow:hidden;
+  margin:24px 0;
+}
+
+.pb-header {
+  background:var(--cream);
+  padding:16px 20px;
+  border-bottom:1px solid var(--warm);
+  display:flex; align-items:center; gap:10px;
+}
+
+.pb-title {
+  font-size:13px; font-weight:600; color:var(--navy);
+}
+
+.pb-badge {
+  font-size:10px; font-weight:700;
+  letter-spacing:1px; text-transform:uppercase;
+  background:var(--gold); color:var(--navy);
+  padding:2px 8px; border-radius:2px;
+}
+
+.pb-body { padding:20px; }
+
+.pb-field { margin-bottom:16px; }
+
+.pb-label {
+  font-size:12px; font-weight:600;
+  color:var(--navy); margin-bottom:6px;
+  display:flex; align-items:center; gap:6px;
+}
+
+.pb-label-tag {
+  font-size:10px; font-weight:600;
+  letter-spacing:1px; text-transform:uppercase;
+  color:var(--purple); background:#eef;
+  padding:1px 6px; border-radius:2px;
+}
+
+.pb-input, .pb-select, .pb-textarea {
+  width:100%; font-family:'DM Sans',sans-serif;
+  font-size:13px; color:var(--text);
+  border:1px solid var(--warm);
+  padding:10px 12px; border-radius:2px;
+  background:var(--white); transition:border 0.2s;
+  outline:none;
+}
+
+.pb-input:focus, .pb-select:focus, .pb-textarea:focus {
+  border-color:var(--gold);
+}
+
+.pb-textarea { resize:vertical; min-height:80px; }
+
+.pb-btn {
+  background:linear-gradient(135deg, var(--gold), var(--gold-light));
+  color:var(--navy); font-family:'DM Sans',sans-serif;
+  font-size:13px; font-weight:700;
+  padding:12px 28px; border:none;
+  cursor:pointer; transition:all 0.2s;
+  letter-spacing:0.5px;
+}
+
+.pb-btn:hover { transform:translateY(-1px); box-shadow:0 4px 16px rgba(245,158,11,0.4); }
+
+.pb-output {
+  margin-top:16px; padding:16px;
+  background:#f8faff; border:1px solid var(--warm);
+  border-left:3px solid var(--gold);
+  font-size:13px; color:var(--text);
+  line-height:1.7; white-space:pre-wrap;
+  display:none; font-family:monospace;
+}
+
+.pb-output.visible { display:block; }
+
+/* QUIZ */
+.quiz-box {
+  background:var(--white);
+  border:1px solid var(--warm);
+  border-radius:4px; overflow:hidden;
+  margin:24px 0;
+}
+
+.quiz-header {
+  background:linear-gradient(135deg, var(--purple), #4f46e5);
+  padding:16px 24px;
+  display:flex; align-items:center; gap:10px;
+}
+
+.quiz-header-title {
+  font-size:13px; font-weight:600; color:var(--white);
+}
+
+.quiz-body { padding:24px; }
+
+.quiz-question {
+  font-size:15px; font-weight:600; color:#1a202c;
+  margin-bottom:16px; line-height:1.5;
+}
+
+.quiz-options {
+  display:flex; flex-direction:column; gap:10px;
+  margin-bottom:20px;
+}
+
+.quiz-option {
+  display:flex; align-items:center; gap:12px;
+  padding:12px 16px;
+  border:1px solid #e8eeff;
+  cursor:pointer; transition:all 0.2s;
+  font-size:14px; color:#1e293b;
+  background:#ffffff;
+}
+
+.quiz-option:hover { border-color:var(--gold); background:#fffbf0; }
+.quiz-option.selected { border-color:var(--gold); background:#fffbf0; }
+.quiz-option.correct { border-color:var(--green); background:#f0fdf8; color:#065f46; }
+.quiz-option.incorrect { border-color:var(--red); background:#fff5f5; color:#991b1b; }
+
+.quiz-option input[type=radio] { accent-color:var(--gold); }
+
+.quiz-btn {
+  background:var(--navy); color:var(--white);
+  font-family:'DM Sans',sans-serif;
+  font-size:13px; font-weight:600;
+  padding:10px 24px; border:none;
+  cursor:pointer; transition:all 0.2s;
+}
+
+.quiz-btn:hover { background:var(--blue); }
+
+.quiz-feedback {
+  margin-top:16px; padding:14px 16px;
+  border-radius:2px; font-size:13px;
+  line-height:1.6; display:none;
+}
+
+.quiz-feedback.correct { background:#f0fdf4; color:#166534; border:1px solid #bbf7d0; }
+.quiz-feedback.incorrect { background:#fef2f2; color:#991b1b; border:1px solid #fecaca; }
+.quiz-feedback.visible { display:block; }
+
+/* DELIVERABLE */
+.deliverable-box {
+  background:#f0fdf8;
+  border:1px solid #a7f3d0;
+  border-left:4px solid var(--green);
+  padding:24px 28px; margin:24px 0;
+}
+
+.deliverable-label {
+  font-size:11px; font-weight:700;
+  letter-spacing:2px; text-transform:uppercase;
+  color:var(--green); margin-bottom:10px;
+}
+
+.deliverable-title {
+  font-size:18px; font-weight:700;
+  color:#065f46; margin-bottom:8px;
+}
+
+.deliverable-desc {
+  font-size:14px; color:#047857;
+  line-height:1.7;
+}
+
+/* KEY CONCEPT */
+.concept-box {
+  background:#fffdf5;
+  border:1px solid #fde68a;
+  border-left:4px solid var(--gold);
+  padding:20px 24px; margin:20px 0;
+}
+
+.concept-label {
+  font-size:11px; font-weight:700;
+  letter-spacing:2px; text-transform:uppercase;
+  color:#b45309; margin-bottom:8px;
+}
+
+.concept-text {
+  font-size:14px; color:#44403c;
+  line-height:1.75;
+}
+
+/* PROMPT EXAMPLE */
+.prompt-example {
+  background:#1e293b;
+  border-radius:4px; padding:20px 24px;
+  margin:16px 0; position:relative;
+}
+
+.prompt-example-label {
+  font-size:10px; font-weight:700;
+  letter-spacing:2px; text-transform:uppercase;
+  color:var(--gold); margin-bottom:12px;
+}
+
+.prompt-example-text {
+  font-family:monospace; font-size:13px;
+  color:#e2e8f0; line-height:1.7;
+  white-space:pre-wrap;
+}
+
+.prompt-example-text .highlight { color:var(--gold-light); }
+
+/* PROGRESS BUTTONS */
+.module-nav-btns {
+  display:flex; justify-content:space-between; align-items:center;
+  padding:32px 64px;
+  border-top:1px solid var(--warm);
+  margin-top:48px;
+}
+
+.nav-btn {
+  font-family:'DM Sans',sans-serif;
+  font-size:13px; font-weight:600;
+  padding:12px 28px; border:none;
+  cursor:pointer; transition:all 0.2s;
+  display:flex; align-items:center; gap:8px;
+}
+
+.nav-btn-prev {
+  background:var(--white);
+  border:1px solid var(--warm);
+  color:var(--muted);
+}
+
+.nav-btn-prev:hover { border-color:var(--navy); color:var(--navy); }
+
+.nav-btn-next {
+  background:linear-gradient(135deg, var(--gold), var(--gold-light));
+  color:var(--navy);
+}
+
+.nav-btn-next:hover { transform:translateY(-1px); box-shadow:0 4px 16px rgba(245,158,11,0.35); }
+
+.complete-btn {
+  background:var(--green); color:var(--white);
+  font-family:'DM Sans',sans-serif;
+  font-size:13px; font-weight:600;
+  padding:12px 28px; border:none; cursor:pointer;
+  transition:all 0.2s;
+}
+
+.complete-btn:hover { background:#059669; }
+
+/* RESPONSIVE */
+@media(max-width:768px) {
+  .layout { grid-template-columns:1fr; }
+  .sidebar { position:relative; height:auto; }
+  .module-header, .content-body { padding:32px 24px; }
+  .module-nav-btns { padding:24px; }
+}
+</style>
+</head>
+<body>
+<div class="layout">
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <div class="sidebar-logo">Claude for HR Professionals</div>
+    <div class="sidebar-sub">Essential AI Competency</div>
+  </div>
+  <div class="progress-bar-wrap">
+    <div class="progress-label">
+      <span>Your Progress</span>
+      <span id="progress-pct">0%</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+  </div>
+  <nav class="module-nav" id="module-nav"></nav>
+</aside>
+
+<!-- MAIN -->
+<main class="main" id="main-content"></main>
+
+</div>
+
+<script>
+const modules = [
+  {
+    id: 1,
+    title: "The HR AI Mindset",
+    subtitle: "Why Claude Changes Everything",
+    duration: "45 min",
+    tag: "Foundation",
+    desc: "Discover why most HR professionals use AI wrong — and learn the HR Prompt Framework that changes everything. This module is your foundation for the entire course.",
+    objectives: [
+      { icon: "🧠", title: "Understand AI Thinking vs. AI Searching", desc: "Learn the critical difference between using Claude as a search engine versus a strategic thinking partner." },
+      { icon: "📐", title: "Master the HR Prompt Framework", desc: "Apply the Role → Context → Task → Constraints → Format model to every HR challenge you face." },
+      { icon: "⚖️", title: "Navigate AI Ethics in HR", desc: "Handle confidentiality, bias, and data sensitivity responsibly when using AI in people functions." },
+      { icon: "⚡", title: "Build Your First Master Template", desc: "Leave with a reusable prompt template you'll use across every future HR task." }
+    ],
+    lessons: [
+      {
+        title: "Why Most HR Professionals Use AI Wrong",
+        duration: "8 min",
+        content: {
+          intro: "There's a reason most HR teams feel underwhelmed by AI. They're using it like a faster Google — typing short questions and expecting magic. Claude isn't a search engine. It's a thinking partner. The difference in output quality between a vague prompt and a structured one is not 10% better. It's 10x better.",
+          points: [
+            "Generic input = generic output. 'Write me a job description' produces the same result for everyone.",
+            "Claude has no context about your company, culture, or candidate unless you give it that context.",
+            "The skill isn't using Claude — it's directing Claude. Think of yourself as the creative director, Claude as the expert executor.",
+            "HR professionals who learn to prompt well will outperform peers who use AI passively within 12 months.",
+          ],
+          concept: { label: "Core Concept", text: "Claude works best when you treat it like a brilliant new colleague on their first day. They're incredibly capable, but they need you to brief them properly. The quality of your brief determines the quality of their work." }
+        },
+        quiz: {
+          question: "A colleague says: 'I tried Claude for HR and the outputs were mediocre — it's not that useful.' What's the most likely root cause?",
+          options: [
+            "Claude isn't powerful enough for HR tasks",
+            "They used vague, context-free prompts",
+            "HR is too complex for AI to handle",
+            "They needed a paid subscription"
+          ],
+          correct: 1,
+          feedback: "Correct! Mediocre outputs almost always come from mediocre prompts. Claude needs context, role, constraints, and format to produce professional-grade HR outputs. The tool is rarely the problem — the prompt is."
+        }
+      },
+      {
+        title: "The HR Prompt Framework: Role → Context → Task → Constraints → Format",
+        duration: "12 min",
+        content: {
+          intro: "This framework is the single most important thing you'll learn in this course. Every great HR prompt you write will follow this structure — whether you're writing it consciously or not.",
+          points: [
+            "ROLE: Tell Claude who it is. 'You are a senior HRBP with 15 years of experience in tech companies...'",
+            "CONTEXT: Give the situation. Industry, company size, culture, what's already happened, what's at stake.",
+            "TASK: Be specific about exactly what you need. Not 'write a policy' but 'write a 500-word remote work policy covering...'",
+            "CONSTRAINTS: What Claude must and must not do. Tone, length, what to avoid, compliance requirements.",
+            "FORMAT: How you want the output structured. Bullet points, table, email, executive summary, etc."
+          ],
+          concept: { label: "The Framework in Action", text: "Without framework: 'Write a job description for an HR manager.' With framework: 'You are a senior talent acquisition specialist. Write a job description for an HR Manager at a 300-person SaaS company in Madrid. The role focuses on talent acquisition and HRBP functions. Avoid corporate jargon. Use inclusive language. Format: job title, 3-sentence hook, responsibilities (8 bullets), requirements (6 bullets), why join us (3 bullets). Max 500 words.'" }
+        },
+        promptBuilder: {
+          title: "Build Your First HR Prompt",
+          fields: [
+            { id: "role", label: "Role", tag: "Who is Claude?", type: "input", placeholder: "e.g. Senior HRBP with 10 years in financial services..." },
+            { id: "context", label: "Context", tag: "Situation", type: "textarea", placeholder: "e.g. 200-person fintech in Madrid, high-growth phase, expanding L&D function..." },
+            { id: "task", label: "Task", tag: "What you need", type: "input", placeholder: "e.g. Write a 90-day onboarding plan for a new People Analytics Manager..." },
+            { id: "constraints", label: "Constraints", tag: "Rules", type: "input", placeholder: "e.g. Avoid jargon, must include check-in milestones, max 400 words..." },
+            { id: "format", label: "Format", tag: "Output structure", type: "select", options: ["Bullet points", "Numbered list", "Email format", "Table", "Executive summary", "Step-by-step guide", "Paragraph prose"] }
+          ]
+        },
+        quiz: {
+          question: "Which element of the HR Prompt Framework is most commonly missing in beginner prompts?",
+          options: [
+            "The task — people forget to say what they want",
+            "The role and context — people skip directly to the task",
+            "The format — people don't specify output structure",
+            "All elements are usually included"
+          ],
+          correct: 1,
+          feedback: "Exactly right. Most people type only the task ('write me a performance review template') and skip Role and Context entirely. This is why the output feels generic — Claude has no idea who you are, what company you work for, or what the output is for."
+        }
+      },
+      {
+        title: "Claude vs. Other AI Tools — What's Different for HR",
+        duration: "8 min",
+        content: {
+          intro: "Not all AI tools are equal for HR work. Understanding Claude's specific strengths helps you use it where it excels and know where to supplement with other tools.",
+          points: [
+            "Claude handles nuance and complexity exceptionally well — perfect for sensitive HR situations like PIPs, investigations, and change communications.",
+            "Claude produces longer, more structured documents without losing coherence — ideal for policies, frameworks, and strategic reports.",
+            "Claude is trained to reason carefully about ethics and confidentiality — critical for HR work involving personal data.",
+            "Claude can analyze uploaded documents — paste in survey data, performance reviews, or org charts for analysis.",
+            "Unlike search engines, Claude synthesizes and creates — it doesn't just retrieve, it thinks and produces."
+          ],
+          concept: { label: "When to Use Claude in HR", text: "Best for: writing, analysis, framework design, strategic thinking, communication drafting, L&D design, and interpreting data narratives. Supplement with: dedicated HR analytics platforms (Workday, SuccessFactors) for live data, and legal counsel for compliance-critical decisions." }
+        },
+        quiz: {
+          question: "An HR Director asks you to use AI to pull real-time turnover data from your HRIS. What's the right approach?",
+          options: [
+            "Use Claude — it can access your HRIS directly",
+            "Use Claude to analyze the data after you export it from your HRIS",
+            "AI can't help with HR data at all",
+            "Ask Claude to estimate turnover based on industry benchmarks"
+          ],
+          correct: 1,
+          feedback: "Correct! Claude can't access your live HRIS, but it's extremely powerful at analyzing data you bring to it. Export your turnover data, paste or upload it, and Claude can identify patterns, suggest causes, and help you build a narrative for leadership — in minutes."
+        }
+      },
+      {
+        title: "AI Ethics and Confidentiality in HR",
+        duration: "10 min",
+        content: {
+          intro: "HR handles some of the most sensitive personal data in any organization. Using AI responsibly isn't just good practice — in many jurisdictions it's a legal requirement (GDPR in Europe, for example).",
+          points: [
+            "Never paste identifiable employee data (names, IDs, salary details) into public AI tools without anonymizing first.",
+            "Use anonymized or synthetic data for exercises and prompts. Replace names with 'Employee A' and specific salaries with ranges.",
+            "Understand your company's AI usage policy before using Claude for HR tasks at work.",
+            "Claude is not a replacement for legal advice. Always involve employment counsel for terminations, investigations, and compliance questions.",
+            "Disclose AI assistance appropriately. If a document was AI-assisted, your professional judgment should always review and validate it."
+          ],
+          concept: { label: "The Golden Rule", text: "Before pasting anything into Claude, ask: 'Would I be comfortable if this employee knew I shared this information with an AI tool?' If the answer is no — anonymize it first or don't use AI for that specific task." }
+        },
+        quiz: {
+          question: "You want to use Claude to analyze exit interview responses. The data includes employee names and departments. What should you do first?",
+          options: [
+            "Paste the data directly — Claude keeps everything confidential",
+            "Anonymize all names and identifying details before pasting",
+            "Don't use AI for this — it's too sensitive",
+            "Only paste the responses from employees who have already left"
+          ],
+          correct: 1,
+          feedback: "Correct. Always anonymize before pasting any HR data into AI tools. Replace names with codes (Employee 001, 002), remove departments if they're identifiable, and strip any other personally identifiable information. You get the same analytical value with zero privacy risk."
+        }
+      }
+    ],
+    scenario: {
+      title: '"The Rushed HRBP"',
+      desc: "It's 9:15am. Your leadership meeting starts at 10:00am. Your CHRO just messaged asking for a 1-page strategic summary of the last 3 months of employee feedback — covering themes, risks, and recommended actions. You have the raw data. You have 45 minutes. Go.",
+      steps: [
+        "Anonymize your feedback data (remove names, replace with codes)",
+        "Apply the HR Prompt Framework to build your prompt — Role, Context, Task, Constraints, Format",
+        "Run the prompt in Claude and review the output",
+        "Refine: ask Claude to strengthen the 'recommended actions' section with more specificity",
+        "Final check: does this read like it came from a strategic HR professional?"
+      ]
+    },
+    deliverable: {
+      title: "Your HR Master Prompt Template",
+      desc: "By the end of this module, you'll have built a reusable master prompt template pre-loaded with your role, company context, and preferred output format — so every future Claude interaction starts at 80% rather than 0%."
+    }
+  },
+
+  {
+    id: 2,
+    title: "Talent Acquisition",
+    subtitle: "From Job Post to Offer Letter",
+    duration: "45 min",
+    tag: "Recruiting",
+    desc: "Transform your entire recruitment workflow using Claude. Write compelling job descriptions, build structured interview guides, audit for bias, and draft candidate communications — all faster and better than before.",
+    objectives: [
+      { icon: "📝", title: "Write Compelling Job Descriptions", desc: "Create JDs that attract the right candidates and reflect your employer brand authentically." },
+      { icon: "🔍", title: "Audit for Bias", desc: "Use Claude to identify and eliminate exclusionary language that limits your talent pool." },
+      { icon: "🎯", title: "Build Interview Guides", desc: "Create competency-based interview structures that surface the candidates who will actually succeed." },
+      { icon: "✉️", title: "Candidate Communications at Scale", desc: "Draft personalized, professional candidate emails without spending hours on each one." }
+    ],
+    lessons: [
+      {
+        title: "The Anatomy of a High-Performing Job Description",
+        duration: "10 min",
+        content: {
+          intro: "Most job descriptions are written for the company's convenience, not the candidate's decision-making. A high-performing JD is a piece of persuasion — it attracts the right people and actively filters out the wrong ones.",
+          points: [
+            "The hook (first 3 sentences) determines whether a candidate keeps reading. Most JDs lose candidates here.",
+            "Responsibilities should be outcomes, not activities. 'Drive talent acquisition strategy' beats 'Manage recruiting processes'.",
+            "Requirements should separate must-haves from nice-to-haves explicitly — combined lists discourage great candidates.",
+            "Research shows women apply only when they meet 100% of criteria; men apply at 60%. Explicit 'nice-to-have' sections increase diversity.",
+            "'Why join us' must be specific. 'Great culture and competitive salary' is meaningless. Specificity signals authenticity."
+          ],
+          concept: { label: "The JD Formula", text: "Hook (3 sentences, emotion + impact) → What you'll do (6-8 outcome-focused bullets) → What you bring (must-haves, then nice-to-haves separately) → What we offer (specific, honest) → Who we are (2-3 sentences, genuine voice)." }
+        },
+        promptBuilder: {
+          title: "Build a Job Description",
+          fields: [
+            { id: "jobtitle", label: "Job Title", tag: "Role", type: "input", placeholder: "e.g. Senior People Analytics Manager" },
+            { id: "company", label: "Company Context", tag: "Organisation", type: "textarea", placeholder: "e.g. 400-person fintech, Madrid, Series B, international team, data-driven culture..." },
+            { id: "keyresps", label: "Key Responsibilities", tag: "Core duties", type: "textarea", placeholder: "e.g. Build people analytics capability, present to CHRO, workforce planning, attrition modelling..." },
+            { id: "musthave", label: "Must-Have Requirements", tag: "Non-negotiable", type: "input", placeholder: "e.g. 5+ years HR analytics, Python/SQL, stakeholder management..." },
+            { id: "jdtone", label: "Tone", tag: "Voice", type: "select", options: ["Modern and direct", "Warm and inclusive", "Ambitious and high-performance", "Collaborative and humble", "International and dynamic"] }
+          ]
+        },
+        quiz: {
+          question: "Your hiring manager sends you a JD with a single requirements list of 15 items. What's the most important thing to fix?",
+          options: [
+            "Reduce the total number of requirements to 5",
+            "Split into must-haves and nice-to-haves to avoid discouraging strong candidates",
+            "Add more detail to each requirement",
+            "Remove all requirements and let candidates self-assess"
+          ],
+          correct: 1,
+          feedback: "Splitting requirements is one of the highest-impact JD improvements you can make. A combined list of 15 items reads as 15 mandatory criteria, which significantly reduces applications — especially from underrepresented groups. Separating must-haves from nice-to-haves signals that you're open to strong candidates who don't check every box."
+        }
+      },
+      {
+        title: "Using Claude to Audit JDs for Bias and Inclusivity",
+        duration: "8 min",
+        content: {
+          intro: "Unconscious bias in job descriptions is one of the most well-documented barriers to diverse hiring. Claude can audit your JDs for biased language, gendered terms, ability-exclusive requirements, and cultural assumptions — in seconds.",
+          points: [
+            "Gendered language: words like 'rockstar', 'ninja', 'dominant', 'aggressive' skew male; 'supportive', 'nurturing' skew female.",
+            "Ability-exclusive language: 'must be able to lift 50kg', 'fast-paced environment' can exclude without being role-relevant.",
+            "Cultural assumptions: 'work hard, play hard', 'startup mentality' can signal exclusion to certain groups.",
+            "Age-coded language: 'digital native', 'recent graduate' may violate age discrimination laws in some jurisdictions.",
+            "Educational gatekeeping: requiring degrees for roles where skills matter more unnecessarily narrows your pool."
+          ],
+          concept: { label: "The Bias Audit Prompt", text: "Tell Claude: 'Audit this job description for biased, exclusionary, or gendered language. For each issue found, explain why it's problematic and suggest an inclusive alternative. Then rewrite the full JD with all corrections applied.'" }
+        },
+        quiz: {
+          question: "Which of the following phrases in a job description is most likely to deter qualified female candidates from applying?",
+          options: [
+            "Collaborate with cross-functional teams",
+            "Must be a rockstar who dominates the competition",
+            "Comfortable working in ambiguous environments",
+            "Strong communication skills required"
+          ],
+          correct: 1,
+          feedback: "Research consistently shows that aggressive, competitive language ('rockstar', 'dominates', 'crush it', 'killer instinct') skews strongly male and deters female applicants. Replacing with outcome-focused language ('deliver exceptional results', 'drive measurable impact') attracts equally high-performing candidates more inclusively."
+        }
+      },
