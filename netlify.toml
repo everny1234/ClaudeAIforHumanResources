@@ -2,7 +2,3 @@
   for = "/course.html"
   [headers.values]
     Basic-Auth = "user:yourpassword"
-
-    git add .
-git commit -m "add password protection"
-git push
