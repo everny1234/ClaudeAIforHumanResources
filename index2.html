@@ -866,3 +866,685 @@ const modules = [
           feedback: "Research consistently shows that aggressive, competitive language ('rockstar', 'dominates', 'crush it', 'killer instinct') skews strongly male and deters female applicants. Replacing with outcome-focused language ('deliver exceptional results', 'drive measurable impact') attracts equally high-performing candidates more inclusively."
         }
       },
+{
+  title: "Building Competency-Based Interview Guides",
+        duration: "12 min",
+        content: {
+          intro: "Unstructured interviews are one of the worst predictors of job performance. Competency-based interview guides ensure every candidate is evaluated on the same criteria — increasing fairness, quality of hire, and legal defensibility.",
+          points: [
+            "Start by defining 4-6 core competencies for the role (e.g. strategic thinking, stakeholder influence, data literacy, resilience).",
+            "For each competency, write 1-2 behavioral questions using the STAR format trigger (Situation, Task, Action, Result).",
+            "Define what a strong, adequate, and weak answer looks like for each question — this is your scoring rubric.",
+            "Include a scoring scale (1-4 or 1-5) and space for evidence notes, not just impressions.",
+            "Claude can generate a full interview guide with scoring rubric from a job description in under 2 minutes."
+          ],
+          concept: { label: "The Competency Interview Prompt", text: "Tell Claude: 'Based on this job description [paste JD], identify the 5 most critical competencies for success. For each competency, write 2 behavioral interview questions using STAR format, and define what a strong (4/4), adequate (2-3/4) and weak (1/4) answer looks like. Format as a structured interview guide.'" }
+        },
+        quiz: {
+          question: "What makes competency-based interviews more legally defensible than traditional interviews?",
+          options: [
+            "They're conducted by more experienced interviewers",
+            "Every candidate is assessed on the same pre-defined, job-relevant criteria with documented evidence",
+            "They take longer so more information is gathered",
+            "They use standardized psychological assessments"
+          ],
+          correct: 1,
+          feedback: "Legal defensibility in hiring comes from consistency and job-relevance. When every candidate answers the same questions assessed against the same criteria — and you have documented evidence scores — you can demonstrate that your process was fair and role-relevant if challenged. Unstructured interviews leave you exposed."
+        }
+      },
+      {
+        title: "Candidate Communications at Scale",
+        duration: "8 min",
+        content: {
+          intro: "Candidate experience is employer brand in action. Every email you send is either building or eroding your reputation as an employer. Claude helps you write communications that feel personal, professional, and human — even at volume.",
+          points: [
+            "Application acknowledgement: sets the tone for the entire candidate experience. Most are robotic — yours doesn't have to be.",
+            "Interview invitations: include what to expect, who they'll meet, how long, format (video/in-person), and a genuine excitement signal.",
+            "Rejection emails: the most neglected communication in recruiting. A well-written rejection protects your employer brand.",
+            "Offer letters: should feel like an invitation to join something meaningful, not a legal document.",
+            "Claude can write all four templates in under 5 minutes, customized for your company voice."
+          ],
+          concept: { label: "The Candidate Comms Prompt", text: "Tell Claude: 'Write [4 candidate email templates: application acknowledgment, interview invitation, professional rejection, offer letter] for a [role] at [company description]. Tone: [warm/professional/enthusiastic]. Each email should feel personal, not templated. Include placeholders for personalization in [brackets].'" }
+        },
+        quiz: {
+          question: "A candidate who was rejected for a role posts on LinkedIn praising your company's communication process. What most likely happened?",
+          options: [
+            "They got a personal call from the CEO",
+            "They received a rejection email that was specific, respectful, and timely",
+            "They were offered a different role instead",
+            "They knew someone at the company"
+          ],
+          correct: 1,
+          feedback: "Great rejection emails are one of the most underrated employer branding tools available. Candidates who feel respected in rejection become brand advocates, refer friends, and often reapply when a better-fit role opens. Claude can write rejection emails that are specific enough to feel human without being time-consuming."
+        }
+      }
+    ],
+    scenario: {
+      title: '"The Impossible Brief"',
+      desc: "Your hiring manager sends you a Slack message at 8am: 'Hey, we're opening a Senior People Analytics Manager role. Can you have a full JD, a 5-question interview guide with scoring rubric, and a rejection email template ready by noon? Salary range €65-80k.' It's 8:15am.",
+      steps: [
+        "Build the JD prompt using the HR Prompt Framework with the role details",
+        "Run a bias audit on your generated JD and apply corrections",
+        "Generate the competency-based interview guide with scoring rubric",
+        "Draft the rejection email template with personalization placeholders",
+        "Review the full toolkit — would you be proud to send this to your hiring manager?"
+      ]
+    },
+    deliverable: {
+      title: "Complete Recruitment Toolkit",
+      desc: "A full, reusable recruitment toolkit: 1 bias-audited job description template, 1 competency-based interview guide with scoring rubric, and 4 candidate email templates (acknowledgment, invitation, rejection, offer) — all customized for your organization."
+    }
+  },
+
+  {
+    id: 3,
+    title: "People Analytics",
+    subtitle: "Making Data Tell a Story",
+    duration: "45 min",
+    tag: "Analytics",
+    desc: "Data alone never changes decisions — narrative does. Learn to use Claude to transform HR numbers into compelling strategic stories that move leadership to act.",
+    objectives: [
+      { icon: "📊", title: "Interpret HR Data Outputs", desc: "Take raw analytics outputs and understand what they actually mean for your organization." },
+      { icon: "📖", title: "Build Executive Narratives", desc: "Translate numbers into the language of business impact that CFOs and CEOs respond to." },
+      { icon: "🔍", title: "Identify Patterns and Root Causes", desc: "Use Claude to go beyond 'what happened' to 'why it happened' and 'what to do about it'." },
+      { icon: "📋", title: "Create HR Data Reports", desc: "Produce polished, decision-ready analytics reports without a data science background." }
+    ],
+    lessons: [
+      {
+        title: "Why Data Alone Never Changes Decisions",
+        duration: "8 min",
+        content: {
+          intro: "You've been there. You present a slide with a compelling attrition graph. Leadership nods. Nothing changes. The problem isn't the data — it's that data without narrative doesn't create urgency, assign responsibility, or point to action.",
+          points: [
+            "Decision-makers aren't moved by numbers — they're moved by implications. '22% attrition' is a number. '22% attrition means we replaced 88 people last year at an estimated cost of €2.6M' is a business problem.",
+            "Every data story needs three elements: What happened (the finding), Why it matters (the implication), What to do (the recommendation).",
+            "Leadership time is limited. Your HR analytics narrative should be answerable in 90 seconds or less at the headline level.",
+            "Claude's role: take your raw data findings and help you build the narrative layer that data tools can't provide.",
+          ],
+          concept: { label: "The Analytics Narrative Formula", text: "Finding → So What → Now What. Example: 'Attrition in Engineering is 31% (Finding) — at this rate we'll lose half the team in 18 months and delay our product roadmap by 6+ months (So What) — we recommend an immediate compensation benchmarking study and stay interview program for top performers (Now What).'" }
+        },
+        quiz: {
+          question: "You present attrition data to the CFO showing 22% annual turnover. They respond: 'So what do you want me to do about it?' What's missing from your presentation?",
+          options: [
+            "More detailed breakdowns by department",
+            "The financial implication and a specific recommendation",
+            "A comparison to industry benchmarks",
+            "Historical trend data from previous years"
+          ],
+          correct: 1,
+          feedback: "The CFO's 'so what' question reveals that your data had no narrative bridge to action. They need to understand the business cost (financial implication) and what specifically you're asking them to approve or fund (recommendation). Always build the 'So What → Now What' layer before presenting to leadership."
+        }
+      },
+      {
+        title: "Attrition Analysis: From Numbers to Retention Strategy",
+        duration: "12 min",
+        content: {
+          intro: "Attrition analysis is one of the most common — and most mishandled — People Analytics tasks. Most HR teams report the number. The best HR teams diagnose the cause and prescribe the cure.",
+          points: [
+            "Segment your attrition data before you analyze it: voluntary vs. involuntary, by tenure, by department, by performance quartile, by manager.",
+            "The most valuable attrition metric isn't overall turnover — it's regrettable attrition (high performers leaving voluntarily).",
+            "Tenure analysis reveals where you're losing people: in the first 90 days (onboarding problem), 12-18 months (growth problem), or 3+ years (culture/compensation problem).",
+            "Claude can take your segmented attrition data and generate hypotheses about root causes, risk factors, and intervention priorities.",
+            "Always pair attrition data with exit interview themes — Claude can cross-reference both to build a stronger diagnosis."
+          ],
+          concept: { label: "The Attrition Prompt", text: "Tell Claude: 'Here is our attrition data for Q3 [paste anonymized data]. Analyze this data to: 1) identify the 3 highest-risk segments, 2) hypothesize the likely root causes based on the patterns, 3) recommend 3 targeted retention interventions with expected impact, 4) identify what additional data would strengthen this analysis. Format as an executive brief.'" }
+        },
+        quiz: {
+          question: "Your attrition data shows 8% overall turnover — below industry average. Your CHRO says everything looks fine. What should you check before agreeing?",
+          options: [
+            "Whether the benchmark source is reliable",
+            "The breakdown by performance quartile — high performer attrition might be masking a serious problem",
+            "Whether the data includes contractor turnover",
+            "The exact calculation methodology used"
+          ],
+          correct: 1,
+          feedback: "Overall attrition below benchmark can mask a critical problem: if your low attrition is driven by low performers staying while high performers leave, you're actually in a worse position than the number suggests. Always segment by performance quartile before declaring attrition 'healthy.' This is the kind of insight that elevates HR from reporter to strategic advisor."
+        }
+      },
+      {
+        title: "Engagement Survey Analysis at Speed",
+        duration: "10 min",
+        content: {
+          intro: "Most engagement survey analysis takes weeks. The data sits, the findings get diluted by time, and by the presentation date, employees are already cynical that nothing will change. Claude can compress this timeline dramatically.",
+          points: [
+            "Quantitative data (scores) tells you what. Qualitative data (open text) tells you why. Both are essential.",
+            "For open-text responses, Claude can theme hundreds of comments in minutes — identifying the top 5 themes with supporting evidence.",
+            "Always segment engagement by manager — engagement is a local phenomenon. Company-wide scores hide the managers causing damage.",
+            "The most important output of engagement analysis isn't the findings — it's the action commitments that leadership makes publicly.",
+            "Claude can draft the engagement results communication to employees, including honest acknowledgment of problems and specific commitments."
+          ],
+          concept: { label: "The Survey Analysis Prompt", text: "Tell Claude: 'Analyze these 200 anonymized employee survey responses [paste data]. Identify: 1) Top 5 themes with frequency and representative quotes, 2) Most urgent issues requiring immediate action, 3) Hidden positives that should be amplified, 4) Recommended 3 commitments leadership should make publicly. Format as a ready-to-present findings deck outline.'" }
+        },
+        quiz: {
+          question: "Your engagement survey shows company-wide eNPS of +42 — considered good. Why might this still require urgent action?",
+          options: [
+            "The benchmark for your industry is higher",
+            "One department or manager cluster might have scores of -20, masked by high scores elsewhere",
+            "eNPS is not a reliable metric and should be replaced",
+            "The survey response rate might be low"
+          ],
+          correct: 1,
+          feedback: "Company-wide averages in engagement data are almost always misleading. A +42 company average can hide a department at -20 — which means serious retention and performance risk in that team. Always disaggregate engagement data by manager, team, and tenure before drawing conclusions. Claude can help you identify these outliers in seconds."
+        }
+      },
+      {
+        title: "The ROI of HR: Making the Business Case for People Investment",
+        duration: "10 min",
+        content: {
+          intro: "The question every HR professional dreads: 'What's the ROI of this?' Whether it's L&D spend, a new HRIS, or a wellbeing program, finance will ask. Claude helps you build the business case with rigor.",
+          points: [
+            "HR ROI has two sides: cost avoidance (what we prevented) and value creation (what we enabled). Most HR teams only present one.",
+            "Cost of turnover formula: typically 0.5–2x annual salary depending on role seniority. A team of 10 with 30% attrition at avg €50k salary = €75k–300k annual cost.",
+            "L&D ROI: measure productivity improvement, time-to-competency reduction, and internal promotion rates versus external hire costs.",
+            "Claude can help you build a financial model narrative: give it your inputs (headcount, attrition rate, avg salary, program cost) and it will build the business case argument.",
+            "The strongest HR business cases combine financial modeling with risk framing: 'If we don't invest, here's what that costs us.'"
+          ],
+          concept: { label: "The ROI Prompt", text: "Tell Claude: 'Help me build an ROI business case for [HR initiative]. Our inputs are: [headcount, cost of initiative, expected impact metrics]. Calculate: estimated cost of the problem we're solving, expected return from the initiative, break-even timeline. Format as a 1-page CFO-ready summary with a clear recommendation.'" }
+        },
+        quiz: {
+          question: "Your L&D program costs €80,000. It reduced time-to-productivity for new hires from 6 months to 4 months. Average new hire salary is €48,000. How do you frame the ROI?",
+          options: [
+            "We spent €80,000 on training this year",
+            "We saved approximately €80,000 in productivity costs (2 months × €4,000/month × 10 hires) — the program paid for itself",
+            "We trained 10 new hires successfully",
+            "New hire satisfaction scores improved by 15%"
+          ],
+          correct: 1,
+          feedback: "This is exactly the kind of financial reframing that turns HR from a cost center into a value driver. 2 months of productivity × €4,000/month salary cost × 10 hires = €80,000 in productivity recovered — essentially breaking even on the program cost in year 1, with compounding benefits in retention and performance going forward. Claude can build these calculations into a full CFO narrative."
+        }
+      }
+    ],
+    scenario: {
+      title: '"The Attrition Alarm"',
+      desc: "Monday morning. Your CEO walks into your office with a printout. Engineering attrition hit 31% last quarter. The CTO is furious. The CEO wants a full analysis, root cause hypothesis, and retention plan on their desk by end of week. You have the raw data. You have Claude. You have 4 days.",
+      steps: [
+        "Anonymize your attrition dataset and segment it by tenure, performance, and manager",
+        "Use Claude to analyze the segments and generate root cause hypotheses",
+        "Cross-reference with exit interview themes using Claude to identify the top 3 drivers",
+        "Build a retention strategy recommendation with Claude — 3 interventions, timeline, expected impact",
+        "Draft the executive brief using Claude — CEO-ready, 1 page, Finding → So What → Now What structure"
+      ]
+    },
+    deliverable: {
+      title: "People Analytics Narrative Toolkit",
+      desc: "An executive-ready analytics narrative template for attrition, engagement, and ROI reporting — plus a prompt library of 15 analytics prompts for the most common HR data scenarios you'll face."
+    }
+  },
+
+  {
+    id: 4,
+    title: "Learning & Development",
+    subtitle: "Design Faster, Deliver Better",
+    duration: "45 min",
+    tag: "L&D",
+    desc: "Use Claude as your co-designer to build L&D programs, workshops, microlearning content, and personalized development plans — in a fraction of the time it used to take.",
+    objectives: [
+      { icon: "🎓", title: "Design Full L&D Programs", desc: "Build end-to-end learning programs aligned to business objectives and skill development needs." },
+      { icon: "🛠️", title: "Create Workshop Facilitation Guides", desc: "Develop detailed facilitation plans that any trainer can pick up and deliver confidently." },
+      { icon: "📱", title: "Build Microlearning Content", desc: "Convert complex topics into bite-sized, engaging learning experiences for busy employees." },
+      { icon: "📈", title: "Measure L&D Effectiveness", desc: "Design evaluation frameworks that prove the business impact of your learning investments." }
+    ],
+    lessons: [
+      {
+        title: "Instructional Design Principles Claude Needs to Help You",
+        duration: "8 min",
+        content: {
+          intro: "Claude can design incredible learning experiences — but only if you brief it with solid instructional design principles. This lesson gives you the frameworks to direct Claude effectively as an L&D co-designer.",
+          points: [
+            "Bloom's Taxonomy: Learning objectives should span remembering → understanding → applying → analyzing → evaluating → creating. Most L&D stops at 'understanding.'",
+            "70-20-10 Model: 70% of learning happens on the job, 20% from others, 10% from formal training. Your programs should reflect this.",
+            "Adult Learning Principles (Andragogy): Adults learn best when they understand why, can relate to their experience, and can apply immediately. Design for relevance, not theory.",
+            "Spaced repetition: one-time training has ~90% forgetting rate within a week. Build in reinforcement touchpoints.",
+            "When prompting Claude for L&D: always specify the learner profile, business objective, learning modality, and measurement approach."
+          ],
+          concept: { label: "The L&D Prompt Brief", text: "Tell Claude: 'Design a [program type] for [learner profile] at [company type]. Business objective: [specific outcome]. Learning modality: [workshop/self-paced/blended]. Duration: [time available]. Apply adult learning principles and include: learning objectives at application level or above, session flow with timings, facilitator notes, and a measurement approach using Kirkpatrick Level 2 and 3.'" }
+        },
+        quiz: {
+          question: "A manager asks you to design a 2-hour compliance training that employees will 'actually remember and use.' What's the most important design principle to apply?",
+          options: [
+            "Include a quiz at the end to test retention",
+            "Design for application — use realistic scenarios and practice, not just information delivery",
+            "Make the content as comprehensive as possible",
+            "Use high-quality video production values"
+          ],
+          correct: 1,
+          feedback: "Compliance training fails not because employees aren't paying attention, but because it's designed for information delivery rather than behavior change. Designing for application means using realistic scenarios, having participants practice the correct response, and following up with reinforcement. Claude can build this kind of scenario-based compliance training in minutes."
+        }
+      },
+      {
+        title: "Building a New Manager Development Program",
+        duration: "12 min",
+        content: {
+          intro: "The transition from individual contributor to manager is one of the most critical — and most undersupported — career transitions in any organization. A well-designed new manager program reduces early failures, improves team performance, and builds your leadership pipeline.",
+          points: [
+            "New managers fail most often in 3 areas: having difficult conversations, shifting from doing to leading, and managing performance.",
+            "A 4-week program is the minimum viable intervention. 90 days is the gold standard.",
+            "Content should be immediately applicable — each session should produce a tool, conversation, or action the manager takes that week.",
+            "Peer learning cohorts (small groups of new managers learning together) dramatically improve retention and accountability.",
+            "Claude can build the full curriculum, session facilitator guides, and manager toolkits in one conversation."
+          ],
+          concept: { label: "New Manager Program Prompt", text: "Tell Claude: 'Design a 4-week New Manager Development Program for [number] first-time managers at [company type]. Key challenges they face: difficult conversations, delegation, and performance management. Format: weekly 2-hour workshops + one action challenge per week. Include: session objectives, agenda with timings, facilitator notes, discussion questions, and a take-away tool for each session. Apply 70-20-10 principles.'" }
+        },
+        quiz: {
+          question: "Your new manager program ends with a satisfaction survey. 92% of participants rate it 'excellent.' Six months later, their teams' engagement scores haven't improved. What went wrong?",
+          options: [
+            "The training content was incorrect",
+            "The program measured reaction (Level 1) but didn't design for behavior change (Level 3)",
+            "Six months isn't enough time to see results",
+            "Engagement is affected by too many factors for training to impact it"
+          ],
+          correct: 1,
+          feedback: "This is the classic L&D trap: optimizing for participant satisfaction (Kirkpatrick Level 1) rather than behavior change (Level 3) and results (Level 4). A program that feels great but doesn't change what managers do on Monday morning has failed its purpose. Design for behavior change from the start: what specific actions will managers take differently? How will you measure that?"
+        }
+      },
+      {
+        title: "Microlearning: Converting Complexity into Bite-Sized Impact",
+        duration: "10 min",
+        content: {
+          intro: "The average employee has 24 minutes per week for formal learning. Traditional courses are designed for a world that no longer exists. Microlearning meets people where they are — short, targeted, immediately applicable.",
+          points: [
+            "Microlearning modules should be 3-7 minutes maximum. One concept per module. One action per concept.",
+            "The best microlearning format: Hook (why this matters) → Core concept (one idea) → Example (real scenario) → Practice (one question) → Action (do this today).",
+            "Claude can convert any long-form content — policy documents, training manuals, research papers — into microlearning modules.",
+            "Video scripts, quiz questions, scenario cards, manager briefing notes — Claude can produce all microlearning assets from a single prompt.",
+            "Microlearning works best as a series: 5-part series over 5 days creates habit and spaced repetition."
+          ],
+          concept: { label: "The Microlearning Prompt", text: "Tell Claude: 'Convert this [policy/document/topic] into a 5-part microlearning series. Each module: max 5 minutes, one core concept, one real workplace scenario, one practice question with answer rationale, one specific action for the learner to take today. Target audience: [learner profile]. Tone: conversational, not academic. Format each module as a script.'" }
+        },
+        quiz: {
+          question: "You're converting a 40-page GDPR compliance policy into microlearning. What's the best first step?",
+          options: [
+            "Divide the 40 pages into 40 equal modules",
+            "Identify the 5-8 behaviors employees actually need to change, then design a module around each behavior",
+            "Summarize the entire policy into one 10-minute video",
+            "Ask employees which sections they find most confusing"
+          ],
+          correct: 1,
+          feedback: "The most common microlearning mistake is organizing by content (document sections) rather than behavior (what people need to do differently). A 40-page GDPR policy contains hundreds of rules, but employees probably only need to master 5-8 key behaviors to be compliant. Identify those behaviors first, then build one focused module per behavior."
+        }
+      },
+      {
+        title: "Measuring L&D Effectiveness — The Kirkpatrick Model with Claude",
+        duration: "10 min",
+        content: {
+          intro: "Most L&D measurement stops at 'did they like it?' The Kirkpatrick model gives you a framework to measure actual business impact — and Claude can help you design the measurement system before you build the program.",
+          points: [
+            "Level 1 (Reaction): Did participants find it relevant and engaging? Measure: post-training survey. Easy but least meaningful.",
+            "Level 2 (Learning): Did knowledge or skills actually improve? Measure: pre/post assessment, skills demonstration.",
+            "Level 3 (Behavior): Are they applying it on the job? Measure: manager observation, 30/60/90 day check-ins, peer feedback.",
+            "Level 4 (Results): Did it impact business outcomes? Measure: the KPI you identified at program design (attrition, productivity, error rates).",
+            "Start with Level 4: identify the business outcome first, then work backwards to design the program and measurement approach."
+          ],
+          concept: { label: "The Measurement Design Prompt", text: "Tell Claude: 'Design a full measurement framework for a [program type] targeting [learner profile]. Using the Kirkpatrick 4-Level model, define: specific metrics for each level, data collection method and timing, survey questions for Level 1-2, behavior indicators for Level 3, and the business KPI for Level 4. Include a measurement timeline and a reporting template for leadership.'" }
+        },
+        quiz: {
+          question: "You're designing a leadership development program. In what order should you approach design and measurement?",
+          options: [
+            "Design the program → measure what's easy to measure afterward",
+            "Define the Level 4 business outcome first → work backwards to design program and measurement",
+            "Measure baseline data → then design program to address gaps",
+            "Run the program → decide what to measure based on what changed"
+          ],
+          correct: 1,
+          feedback: "Always start with Level 4. What business outcome do you need to move? Once you've defined that (e.g. 'reduce regrettable attrition in managed teams by 15%'), you work backwards: what behaviors (Level 3) would drive that outcome? What knowledge and skills (Level 2) underpin those behaviors? Then design the program to develop exactly those skills — and your measurement plan is already built in."
+        }
+      }
+    ],
+    scenario: {
+      title: '"New Manager Panic"',
+      desc: "Six individual contributors just got promoted to manager on the same day. Your Head of HR calls you: 'We need a development program running within 3 weeks. 4 sessions, practical, focused on what they'll actually face in month one.' You have a blank slide deck and Claude.",
+      steps: [
+        "Identify the 4 highest-priority new manager challenges using Claude's analysis",
+        "Design the 4-session program structure with objectives, agenda, and outcomes per session",
+        "Build a full facilitation guide for Session 1 (Claude does the first draft, you refine)",
+        "Create a manager action challenge for each session — the thing they do before the next meeting",
+        "Design the measurement framework: what will you measure at 30, 60, and 90 days?"
+      ]
+    },
+    deliverable: {
+      title: "Complete L&D Program Toolkit",
+      desc: "A full L&D toolkit: New Manager Development Program outline (4 sessions), one complete facilitation guide, a microlearning series template, and a Kirkpatrick measurement framework — all ready to customize and deploy."
+    }
+  },
+
+  {
+    id: 5,
+    title: "Organizational Development",
+    subtitle: "Culture, Change & Org Design",
+    duration: "45 min",
+    tag: "OD & Change",
+    desc: "Tackle the most complex HR challenges — culture integration, change management, and organizational diagnostics — with Claude as your strategic thinking partner.",
+    objectives: [
+      { icon: "🔬", title: "Diagnose Organizational Challenges", desc: "Use structured frameworks to identify the real problem beneath the presenting symptoms." },
+      { icon: "📢", title: "Build Change Communication Plans", desc: "Design communications that reduce resistance and build genuine commitment to change." },
+      { icon: "🧬", title: "Design Culture Frameworks", desc: "Define and operationalize values, behaviors, and culture measurement systems." },
+      { icon: "🗺️", title: "Create Culture Integration Plans", desc: "Navigate mergers, acquisitions, and reorgs with a structured, human-centered approach." }
+    ],
+    lessons: [
+      {
+        title: "Organizational Diagnostic: Finding the Real Problem",
+        duration: "10 min",
+        content: {
+          intro: "In OD, the presenting problem is rarely the real problem. A 'communication issue' is usually a trust issue. A 'performance issue' is usually a clarity or capability issue. A 'culture issue' is usually a leadership behavior issue. Diagnosis before prescription is the most important OD skill you can develop.",
+          points: [
+            "The McKinsey 7S Framework: Strategy, Structure, Systems, Shared Values, Style, Staff, Skills — change in one area creates pressure in all others.",
+            "The Burke-Litwin Model: distinguishes between transformational factors (leadership, culture, mission) and transactional factors (structure, systems, climate).",
+            "Root cause analysis in OD: ask 'why?' five times before proposing a solution. The first answer is almost never the root cause.",
+            "Data sources for diagnosis: engagement surveys, exit interviews, performance data, org chart analysis, leadership observations, focus groups.",
+            "Claude can help you build diagnostic interview questions, analyze qualitative data, and map findings to OD frameworks."
+          ],
+          concept: { label: "The Diagnostic Prompt", text: "Tell Claude: 'Act as an OD consultant. I'm diagnosing [organizational challenge] at a [company description]. Symptoms observed: [list]. Using the Burke-Litwin model, help me: 1) identify which organizational levers are most likely driving these symptoms, 2) generate 10 diagnostic interview questions to test these hypotheses, 3) define what data I should collect to confirm the diagnosis. Format as a diagnostic plan.'" }
+        },
+        quiz: {
+          question: "A business unit leader tells you: 'We have a communication problem — people don't know what's going on.' Before prescribing a solution, what's your most important diagnostic question?",
+          options: [
+            "What communication channels are you currently using?",
+            "What specifically are people not knowing — and what are the consequences of that?",
+            "How often does leadership communicate to the team?",
+            "Have you considered a company newsletter?"
+          ],
+          correct: 1,
+          feedback: "'Communication problem' is almost always a symptom, not a cause. Prescribing more newsletters or town halls without diagnosis usually fails. 'What specifically are people not knowing?' helps you understand whether this is actually an information flow problem, a trust problem (people don't believe what they're told), a clarity problem (strategy isn't clear enough to cascade), or a leadership behavior problem."
+        }
+      },
+      {
+        title: "Change Management Communications That Actually Land",
+        duration: "12 min",
+        content: {
+          intro: "Most change management communication fails because it's designed to inform, not to persuade. People don't resist change because they don't understand it — they resist it because they're afraid of what it means for them. Effective change comms addresses that fear directly.",
+          points: [
+            "WIIFM (What's In It For Me) is the first question every employee asks. Answer it in the first paragraph, not the last.",
+            "Kotter's 8-Step Model: create urgency, build coalition, form strategic vision, enlist volunteers, enable action, generate wins, sustain acceleration, institute change.",
+            "The ADKAR Model (Awareness, Desire, Knowledge, Ability, Reinforcement) maps individual change readiness — useful for targeting your comms.",
+            "Change comms must be honest about what's uncertain. Pretending you have all the answers destroys trust when reality differs.",
+            "Sequence matters: leaders hear first, then managers (briefed to answer questions), then employees. Never the reverse."
+          ],
+          concept: { label: "The Change Comms Prompt", text: "Tell Claude: 'Write a change communication plan for [change initiative] at [company]. Affected employees: [number and profile]. Key concerns they will have: [list]. Apply ADKAR: write 5 communications (one per ADKAR stage) covering: what the change is, why it's happening, what it means for employees specifically, what support is available, and how progress will be communicated. Tone: honest, direct, human.'" }
+        },
+        quiz: {
+          question: "You're rolling out a new performance management system. Early employee feedback is extremely negative — people feel blindsided. What change management principle was most likely violated?",
+          options: [
+            "The system design wasn't good enough",
+            "Employees weren't involved in the process or given advance communication — awareness and desire stages were skipped",
+            "The training wasn't comprehensive enough",
+            "Leadership didn't mandate adoption strongly enough"
+          ],
+          correct: 1,
+          feedback: "Feeling 'blindsided' is the clearest signal that the Awareness and Desire stages of ADKAR were skipped. People were moved straight to implementation without building understanding of why the change was needed (Awareness) or creating genuine commitment to it (Desire). Change that skips these stages generates resistance that can undermine even well-designed systems."
+        }
+      },
+      {
+        title: "Culture Design: Values, Behaviors, and Measurement",
+        duration: "10 min",
+        content: {
+          intro: "Culture is often treated as something that 'just happens.' In reality, culture is designed — either intentionally or by default. The best organizations intentionally design culture and then measure whether it's actually being lived.",
+          points: [
+            "Values without behaviors are decoration. For every value, define 3-4 observable behaviors that demonstrate it in action.",
+            "The culture gap: the difference between stated values and lived experience. This gap is measured by engagement surveys and revealed by what leaders actually do.",
+            "Culture is created by what leaders reward, what they tolerate, and what they celebrate. Formal values matter less than leadership behavior.",
+            "Culture measurement: behavioral frequency surveys (how often do you observe X behavior?), 360 feedback aligned to values, culture add interviews in hiring.",
+            "Claude can help you design the full culture system: value definitions, behavioral indicators, culture survey questions, and culture add interview frameworks."
+          ],
+          concept: { label: "The Culture Design Prompt", text: "Tell Claude: 'Help me design a culture framework for [company type]. Step 1: Based on these organizational goals [list], suggest 4-5 core values with definitions. Step 2: For each value, define 3 observable behaviors at employee level and 3 at leadership level. Step 3: Write 5 culture survey questions per value using behavioral frequency scale. Step 4: Write 2 culture add interview questions per value. Format as a complete culture playbook.'" }
+        },
+        quiz: {
+          question: "Your company's stated value is 'Integrity.' An employee notices that a manager who missed targets was promoted anyway due to their relationship with the CEO. What's the culture impact?",
+          options: [
+            "Minimal — one incident doesn't define culture",
+            "Significant — employees learn that stated values don't apply to those with power, destroying credibility of all stated values",
+            "Moderate — it depends on whether employees know about the promotion",
+            "Positive — it shows the company values loyalty and relationships"
+          ],
+          correct: 1,
+          feedback: "Culture is learned through observation of what actually happens, not what's written on a wall. When employees see that integrity is selectively applied — or that performance accountability doesn't apply to people with connections — they rationally conclude that stated values are aspirational at best, cynically performative at worst. This kind of incident requires visible leadership response to prevent culture erosion."
+        }
+      },
+      {
+        title: "Culture Integration During Mergers and Reorgs",
+        duration: "10 min",
+        content: {
+          intro: "70% of mergers and acquisitions fail to deliver their expected value — and culture clash is consistently cited as a primary cause. Culture integration isn't a soft issue. It's a business continuity issue.",
+          points: [
+            "Culture integration starts at due diligence, not post-close. Cultural incompatibility should be identified and priced before signing.",
+            "There are four integration strategies: assimilation (one culture absorbs another), separation (both maintained independently), transformation (new culture created), and blending (best elements combined). Each has different people implications.",
+            "The first 90 days post-merger are critical — employees are most anxious and most susceptible to leaving during this period.",
+            "Culture integration requires listening before deciding: run focus groups, pulse surveys, and leadership interviews in both organizations before designing the integrated culture.",
+            "Claude can build a 90-day culture integration plan including communication cadence, listening activities, culture workstream design, and quick-win identification."
+          ],
+          concept: { label: "The Integration Plan Prompt", text: "Tell Claude: 'Design a 90-day culture integration plan for a merger between [Company A description] and [Company B description]. Integration strategy: [blending/transformation]. Known cultural tensions: [list]. Include: week-by-week activity plan, communication cadence, listening mechanisms, leadership alignment sessions, culture integration workstream charter, and success metrics at Day 30, 60, 90.'" }
+        },
+        quiz: {
+          question: "Post-merger, Company A's employees are leaving at 3x the normal rate while Company B's are staying. What's the most likely explanation?",
+          options: [
+            "Company A had weaker performers who were already planning to leave",
+            "Company A's employees perceive they are being assimilated into Company B's culture with no voice — a common merger failure",
+            "The integration communication has been insufficient",
+            "Company A's compensation wasn't competitive"
+          ],
+          correct: 1,
+          feedback: "Asymmetric attrition post-merger is a classic signal of perceived assimilation. When one company's employees feel their culture, identity, and ways of working are being erased rather than integrated, they vote with their feet. The solution isn't more communication — it's genuine inclusion of both cultures in designing the future state, with visible leadership signals that both organizations are valued."
+        }
+      }
+    ],
+    scenario: {
+      title: '"The Merger Chaos"',
+      desc: "Your company just acquired a 300-person competitor. The combined organization is 800 people, two cultures, two leadership teams, and significant redundancy in some functions. You have 90 days before the integration becomes visible to customers. HR owns the people workstream. You own HR.",
+      steps: [
+        "Use Claude to conduct a rapid culture diagnostic of both organizations from the information available",
+        "Choose your integration strategy and use Claude to build the rationale for leadership",
+        "Build the 90-day communication plan — what do employees hear, when, from whom",
+        "Design the listening program: pulse surveys, focus groups, and leadership interviews",
+        "Create the culture integration workstream charter with owner, deliverables, and 30/60/90 day milestones"
+      ]
+    },
+    deliverable: {
+      title: "OD & Change Management Toolkit",
+      desc: "A complete OD toolkit: organizational diagnostic framework, change communication plan template (ADKAR-based), culture design playbook (values → behaviors → measurement), and a 90-day merger integration plan template."
+    }
+  },
+
+  {
+    id: 6,
+    title: "HR as a Business",
+    subtitle: "Consulting, Proposals & Personal Brand",
+    duration: "45 min",
+    tag: "Consulting",
+    desc: "Use Claude to position yourself as a premium HR consultant — write proposals that win, build a LinkedIn presence that attracts clients, and package your expertise into productized services.",
+    objectives: [
+      { icon: "💼", title: "Write Winning Consulting Proposals", desc: "Create professional, persuasive proposals that demonstrate strategic value and close clients." },
+      { icon: "📊", title: "Build Client-Ready Reports", desc: "Transform raw findings and notes into polished HR audit reports and strategic recommendations." },
+      { icon: "🌐", title: "Build Your LinkedIn Presence", desc: "Create a 30-day content strategy that positions you as a credible HR thought leader." },
+      { icon: "📦", title: "Productize Your HR Expertise", desc: "Package your knowledge into scalable service offerings that generate income beyond your time." }
+    ],
+    lessons: [
+      {
+        title: "Writing HR Consulting Proposals That Win",
+        duration: "10 min",
+        content: {
+          intro: "Most consulting proposals fail because they describe the consultant, not the client's problem. A winning proposal demonstrates that you understand the client's world better than they do — and that your solution is the obvious answer.",
+          points: [
+            "Structure: Executive Summary → Problem Diagnosis → Proposed Approach → Deliverables → Timeline → Investment → About You.",
+            "Lead with the problem, not your services. The first page should make the client feel heard and understood.",
+            "Be specific about deliverables. 'HR Strategy' is not a deliverable. 'A 12-month People Strategy document with 5 strategic priorities, KPIs, and a Q1 implementation roadmap' is.",
+            "The investment section should frame cost against the cost of inaction: 'For €8,500, we address an attrition problem estimated to cost you €240,000 annually.'",
+            "Claude can generate a first-draft proposal in under 5 minutes from a discovery call briefing — you refine and personalize."
+          ],
+          concept: { label: "The Proposal Prompt", text: "Tell Claude: 'Write a consulting proposal for [prospect description]. Their core problem: [specific challenge]. My proposed solution: [approach]. Deliverables: [list]. Timeline: [duration]. Investment: [fee]. Format: executive summary, problem statement, proposed approach, detailed deliverables, timeline, investment with ROI framing, and a brief about me section. Tone: strategic, confident, client-focused.'" }
+        },
+        promptBuilder: {
+          title: "Build Your Consulting Proposal",
+          fields: [
+            { id: "client", label: "Client Description", tag: "Who they are", type: "textarea", placeholder: "e.g. 200-person SaaS startup in Madrid, Series B, HR team of 2, high growth phase, no formal HR strategy..." },
+            { id: "problem", label: "Core Problem", tag: "Their challenge", type: "textarea", placeholder: "e.g. 34% attrition in engineering, no structured onboarding, ad-hoc performance management..." },
+            { id: "approach", label: "Your Approach", tag: "Your solution", type: "textarea", placeholder: "e.g. 12-week HR Foundation engagement: HR audit, people strategy, onboarding program, performance framework..." },
+            { id: "fee", label: "Investment", tag: "Your fee", type: "input", placeholder: "e.g. €12,500 for 12-week engagement" },
+            { id: "tone", label: "Proposal Tone", tag: "Voice", type: "select", options: ["Strategic and authoritative", "Warm and collaborative", "Data-driven and precise", "Bold and direct"] }
+          ]
+        },
+        quiz: {
+          question: "A prospect says your proposal is 'too expensive.' What's the most effective response?",
+          options: [
+            "Reduce your fee to close the deal",
+            "Reframe the investment against the cost of the problem you're solving",
+            "Add more deliverables to justify the price",
+            "Explain your qualifications in more detail"
+          ],
+          correct: 1,
+          feedback: "Price objections are almost always framing problems, not budget problems. If a client says €8,500 is too expensive, ask: 'What's your current attrition costing you annually?' When the answer is €200,000, your fee looks very different. Claude can help you build the ROI reframe into your proposal so price objections are pre-handled before they arise."
+        }
+      },
+      {
+        title: "Building Client Reports That Demonstrate Strategic Value",
+        duration: "10 min",
+        content: {
+          intro: "The quality of your client report is the quality of your brand. A polished, insightful report generates referrals. A generic one gets filed and forgotten. Claude helps you transform messy discovery notes into strategic deliverables.",
+          points: [
+            "Structure every report around decisions, not information: What should the client decide? What do they need to know to decide it?",
+            "The executive summary should be self-contained — assume the CEO will read only this page.",
+            "Use visual hierarchy: findings → implications → recommendations. Never lead with methodology.",
+            "Quantify where possible: '6 out of 8 managers interviewed cited unclear promotion criteria' is more compelling than 'many managers reported...'",
+            "Always end with a prioritized action plan: what to do in the next 30, 60, and 90 days."
+          ],
+          concept: { label: "The Client Report Prompt", text: "Tell Claude: 'Transform these discovery notes [paste your notes] into a professional HR audit report for [client description]. Structure: Executive Summary (1 page), Key Findings (3-5 findings with evidence), Strategic Implications (so what for the business), Recommendations (prioritized, with effort/impact rating), and a 90-day action plan. Tone: strategic consultant, not academic. Flag where I need to add specific data.'" }
+        },
+        quiz: {
+          question: "You deliver a 40-page HR audit report to a CEO. They skim it and say 'just tell me what I need to do.' What should you have done differently?",
+          options: [
+            "Made the report shorter overall",
+            "Led with a 1-page executive summary containing only the 3 most critical recommendations",
+            "Presented it verbally instead of in writing",
+            "Added more charts and visuals"
+          ],
+          correct: 1,
+          feedback: "CEOs and senior leaders are time-constrained decision-makers. They need to know: what's the headline, what does it mean for the business, and what do I need to decide? A 1-page executive summary with 3 prioritized recommendations should always precede your full report — it's the document inside the document that actually gets read and acted on."
+        }
+      },
+      {
+        title: "LinkedIn Content Strategy for HR Consultants",
+        duration: "12 min",
+        content: {
+          intro: "LinkedIn is where HR buyers live. CHROs, HR Directors, and L&D Heads are all on LinkedIn, consuming content daily. A consistent, strategic LinkedIn presence is the most cost-effective client acquisition tool available to an independent HR consultant.",
+          points: [
+            "Post 3x per week: one educational post, one opinion/insight, one personal story or behind-the-scenes.",
+            "The best performing HR content on LinkedIn: counterintuitive takes, specific data with commentary, short frameworks with a visual, and 'what I learned from...' stories.",
+            "Your positioning statement (what you do, for whom, with what outcome) should be in your headline and About section — not just your job title.",
+            "Engagement before broadcast: spend 15 minutes commenting meaningfully on 5 posts before you post your own. This amplifies reach significantly.",
+            "Claude can generate a full 30-day LinkedIn content calendar in one prompt — with post drafts, hooks, and hashtag strategy."
+          ],
+          concept: { label: "The LinkedIn Content Prompt", text: "Tell Claude: 'Create a 30-day LinkedIn content calendar for an HR consultant specializing in [niche] targeting [audience]. Include: 3 posts per week (educational, insight/opinion, personal story). For each post provide: hook (first line), full post draft, 3 hashtags, and a call to action. Tone: expert but human, not corporate. Vary formats: text, list, story, framework.'" }
+        },
+        quiz: {
+          question: "Your LinkedIn post about people analytics gets 12 likes and 3 comments after 24 hours. What's the most likely problem?",
+          options: [
+            "The topic isn't interesting to your audience",
+            "The hook (first line) didn't create enough curiosity to stop the scroll",
+            "You don't have enough followers yet",
+            "You posted at the wrong time of day"
+          ],
+          correct: 1,
+          feedback: "On LinkedIn, the first 1-2 lines determine whether anyone reads your post — because that's all that shows before the 'see more' cut-off. A weak hook that doesn't create curiosity, challenge an assumption, or promise value means most people scroll past without clicking through. Claude can help you write 5 alternative hooks for any post and A/B test which performs best."
+        }
+      },
+      {
+        title: "Productizing Your HR Expertise",
+        duration: "8 min",
+        content: {
+          intro: "Selling only your time is a ceiling. The most successful HR consultants package their expertise into products and programs that generate revenue while they sleep — or while they're working with another client.",
+          points: [
+            "The productization ladder: 1:1 consulting (highest price, lowest scale) → group programs/cohorts → online courses → templates/toolkits → books/guides (lowest price, highest scale).",
+            "Start with what you already deliver in 1:1 work. What do you build for every client? That's your first product.",
+            "Templates and toolkits are the easiest entry point: €27-97, zero ongoing delivery required, passive income from day 1.",
+            "Group programs (5-10 clients, same program delivered simultaneously) increase revenue 3-5x with minimal additional time.",
+            "Claude can help you package, name, price, and write the sales page for any productized offering in one session."
+          ],
+          concept: { label: "The Product Design Prompt", text: "Tell Claude: 'Help me productize my HR consulting expertise in [niche]. My 1:1 clients typically need: [list of deliverables]. Design 3 productized offerings at different price points: a low-ticket toolkit (€27-97), a mid-ticket group program (€297-997), and a high-ticket consulting package (€2,500+). For each: name, what's included, who it's for, price rationale, and a 3-sentence sales description.'" }
+        },
+        quiz: {
+          question: "You charge €150/hour for 1:1 HR consulting. You want to 5x your income without working 5x more hours. What's the most effective strategy?",
+          options: [
+            "Increase your hourly rate to €750",
+            "Create a group program that delivers similar value to 8 clients simultaneously for €500 each",
+            "Take on 5x more clients by working more hours",
+            "Hire subcontractors to deliver work while you sell"
+          ],
+          correct: 1,
+          feedback: "Group programs are the highest-leverage move for independent consultants. If you currently deliver a 4-session coaching program 1:1 for €600, the same program delivered to 8 people simultaneously earns €4,800 for the same 4 sessions. You've 8x'd the revenue for the same time investment. Claude can help you restructure any 1:1 offering into a group format."
+        }
+      }
+    ],
+    scenario: {
+      title: '"The Cold Proposal"',
+      desc: "A 200-person tech startup in Barcelona messages you on LinkedIn: 'We have no HR function, 34% attrition last year, and we're about to close a Series B. We need help. Can you send us something?' This is your shot. Write the proposal that wins the engagement.",
+      steps: [
+        "Use Claude to structure a discovery brief from the information you have",
+        "Build the full consulting proposal using the proposal prompt framework",
+        "Create the ROI framing: what is 34% attrition costing them annually?",
+        "Write 3 LinkedIn posts announcing you've taken on a new client (without naming them) to build social proof",
+        "Design a productized 'HR Foundation Package' you can pitch to similar startups in future"
+      ]
+    },
+    deliverable: {
+      title: "HR Consulting Business Toolkit",
+      desc: "Your complete consulting launch kit: a winning proposal template, client report structure, 30-day LinkedIn content calendar with 12 post drafts, and 3 productized service offering descriptions — ready to sell."
+    }
+  }
+];
+
+let currentModule = 0;
+let completedModules = new Set();
+
+function buildNav() {
+  const nav = document.getElementById('module-nav');
+  nav.innerHTML = modules.map((m, i) => `
+    <button class="module-nav-item ${i === 0 ? 'active' : ''}" onclick="goToModule(${i})" id="nav-item-${i}">
+      <div class="module-nav-header">
+        <div class="nav-num">${i + 1}</div>
+        <div class="nav-info">
+          <div class="nav-title">${m.title}</div>
+          <div class="nav-meta">${m.duration} · ${m.tag}</div>
+        </div>
+      </div>
+      <div class="lesson-nav">
+        ${m.lessons.map((l, j) => `
+          <div class="lesson-nav-item" onclick="scrollToLesson(event, ${i}, ${j})" id="lesson-nav-${i}-${j}">${l.title}</div>
+        `).join('')}
+      </div>
+    </button>
+  `).join('');
+}
+
+function buildModules() {
+  const main = document.getElementById('main-content');
+  main.innerHTML = modules.map((m, mi) => `
+    <div class="module-page ${mi === 0 ? 'active' : ''}" id="module-${mi}">
+      <div class="module-header">
+        <div class="module-eyebrow">Module ${mi + 1} · ${m.tag}</div>
+        <h1 class="module-title-main">${m.title} — <em>${m.subtitle}</em></h1>
+        <p class="module-desc-main">${m.desc}</p>
+        <div class="module-meta-bar">
+          <div class="meta-pill">⏱ Duration: <span>${m.duration}</span></div>
+          <div class="meta-pill">📚 Lessons: <span>${m.lessons.length}</span></div>
+          <div class="meta-pill">🎯 Tag: <span>${m.tag}</span></div>
+        </div>
+      </div>
+
+      <div class="content-body">
+        <!-- OBJECTIVES -->
+        <div class="section-block">
+          <h2 class="section-heading">Learning Objectives</h2>
+          <div class="objectives-grid">
+            ${m.objectives.map(o => `
+              <div class="objective-card">
+                <div class="objective-icon">${o.icon}</div>
+                <div class="objective-title">${o.title}</div>
+                <div class="objective-desc">${o.desc}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- LESSONS -->
+        <div class="section-block">
+          <h2 class="section-heading">Lessons</h2>
+          ${m.lessons.map((l, li) => buildLesson(l, mi, li)).join('')}
+        </div> 
