@@ -1,4 +1,10 @@
+</>TOML
 [[headers]]
   for = "/course.html"
   [headers.values]
-    Basic-Auth = "user:yourpassword"
+    Basic-Auth = "user:Anais301024!!"
+
+</> Bash 
+git add .
+git commit -m "add password protection"
+git push
