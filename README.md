@@ -19,9 +19,1045 @@ Claude AI course for current and future Human Resources professionals looking to
     --muted: #6366f1;
     --white: #ffffff;
   }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(201,168,76,0.12) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-left {
+    padding: 80px 60px 80px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 5vw, 68px);
+    font-weight: 900;
+    line-height: 1.05;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-subtitle {
+    font-size: 18px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.6;
+    margin-bottom: 48px;
+    max-width: 440px;
+  }
+
+  .hero-cta-group {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 16px 36px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.25s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.15);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .btn-primary:hover::after { transform: translateX(0); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.35); }
+
+  .btn-ghost {
+    color: rgba(255,255,255,0.6);
+    font-size: 14px;
+    font-weight: 400;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 2px;
+    transition: all 0.2s;
+  }
+  .btn-ghost:hover { color: var(--white); border-color: var(--white); }
+
+  .hero-right {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 40px;
+  }
+
+  .hero-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 40px;
+    max-width: 380px;
+    width: 100%;
+    position: relative;
+  }
+
+  .hero-card::before {
+    content: '';
+    position: absolute;
+    top: -1px; left: -1px; right: -1px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--rust));
+  }
+
+  .card-tag {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+
+  .card-stat {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 14px;
+    color: rgba(255,255,255,0.5);
+    font-weight: 300;
+  }
+
+  .card-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.1);
+    margin: 24px 0;
+  }
+
+  .card-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .card-list li {
+    font-size: 13px;
+    color: rgba(255,255,255,0.65);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .card-list li::before {
+    content: '→';
+    color: var(--gold);
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+
+  .floating-badge {
+    position: absolute;
+    bottom: 40px;
+    right: -20px;
+    background: var(--rust);
+    color: var(--white);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 10px 16px;
+    transform: rotate(-2deg);
+    box-shadow: 0 4px 16px rgba(184,92,56,0.4);
+  }
+
+  /* ── SOCIAL PROOF BAR ── */
+  .proof-bar {
+    background: linear-gradient(90deg, #f59e0b, #fbbf24);
+    padding: 16px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+
+  .proof-item {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .proof-dot {
+    width: 4px; height: 4px;
+    background: var(--ink);
+    border-radius: 50%;
+    opacity: 0.4;
+  }
+
+  /* ── PROBLEM SECTION ── */
+  .section { padding: 100px 80px; }
+
+  .problem {
+    background: var(--white);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 20px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 3.5vw, 48px);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 24px;
+  }
+
+  .section-body {
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+
+  .pain-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 32px;
+  }
+
+  .pain-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    font-size: 15px;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+
+  .pain-icon {
+    width: 28px; height: 28px;
+    background: #fff0ec;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .quote-block {
+    background: var(--cream);
+    border-left: 3px solid var(--gold);
+    padding: 32px 36px;
+    position: relative;
+  }
+
+  .quote-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+
+  .quote-author {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--muted);
+    letter-spacing: 0.5px;
+  }
+
+  /* ── MODULES ── */
+  .modules { background: var(--cream); }
+
+  .modules-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .modules-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--warm);
+  }
+
+  .module-card {
+    background: var(--white);
+    padding: 40px 36px;
+    transition: all 0.3s ease;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .module-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--rust));
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    transform-origin: left;
+  }
+
+  .module-card:hover::after { transform: scaleX(1); }
+  .module-card:hover { background: #fdfcfa; }
+
+  .module-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 900;
+    color: var(--warm);
+    line-height: 1;
+    margin-bottom: 16px;
+    transition: color 0.3s;
+  }
+
+  .module-card:hover .module-num { color: var(--gold-light); }
+
+  .module-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+
+  .module-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.65;
+    margin-bottom: 20px;
+  }
+
+  .module-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--sage);
+    background: #eef2ed;
+    padding: 4px 10px;
+  }
+
+  /* ── FOR WHO ── */
+  .forwho {
+    background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
+    color: var(--white);
+  }
+
+  .forwho .section-title { color: var(--white); }
+
+  .forwho-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    background: rgba(255,255,255,0.06);
+    margin-top: 48px;
+  }
+
+  .forwho-card {
+    background: rgba(255,255,255,0.05);
+    padding: 36px;
+    border: 1px solid rgba(255,255,255,0.12);
+    transition: background 0.3s;
+  }
+
+  .forwho-card:hover { background: rgba(245,158,11,0.1); }
+
+  .forwho-emoji {
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
+
+  .forwho-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+
+  .forwho-desc {
+    font-size: 14px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.65;
+  }
+
+  /* ── PRICING ── */
+  .pricing { background: var(--white); }
+
+  .pricing-header { text-align: center; margin-bottom: 64px; }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .price-card {
+    border: 1px solid var(--warm);
+    padding: 36px 28px;
+    position: relative;
+    transition: all 0.3s;
+  }
+
+  .price-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+  }
+
+  .price-card.featured {
+    background: linear-gradient(135deg, #1a1a2e, #0f3460);
+    border-color: var(--gold);
+    color: var(--white);
+  }
+
+  .price-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gold);
+    color: var(--ink);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    white-space: nowrap;
+  }
+
+  .price-tier {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .price-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 44px;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .price-card.featured .price-amount { color: var(--white); }
+
+  .price-period {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 24px;
+  }
+
+  .price-card.featured .price-period { color: rgba(255,255,255,0.4); }
+
+  .price-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 32px;
+  }
+
+  .price-features li {
+    font-size: 13px;
+    color: var(--muted);
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    line-height: 1.4;
+  }
+
+  .price-card.featured .price-features li { color: rgba(255,255,255,0.6); }
+
+  .price-features li::before {
+    content: '✓';
+    color: var(--sage);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .price-card.featured .price-features li::before { color: var(--gold); }
+
+  .btn-price {
+    width: 100%;
+    padding: 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.25s;
+    text-align: center;
+    display: block;
+    text-decoration: none;
+  }
+
+  .btn-price-outline {
+    background: transparent;
+    border: 1px solid var(--warm);
+    color: var(--ink);
+  }
+
+  .btn-price-outline:hover {
+    border-color: var(--ink);
+    background: var(--ink);
+    color: var(--white);
+  }
+
+  .btn-price-solid {
+    background: var(--gold);
+    color: var(--ink);
+  }
+
+  .btn-price-solid:hover {
+    background: var(--gold-light);
+    transform: translateY(-1px);
+  }
+
+  /* ── INSTRUCTOR ── */
+  .instructor {
+    background: var(--cream);
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .instructor-img {
+    background: var(--warm);
+    aspect-ratio: 3/4;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .instructor-img-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 80px;
+    color: rgba(0,0,0,0.1);
+  }
+
+  .instructor-img::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 40%;
+    background: linear-gradient(transparent, rgba(201,168,76,0.2));
+  }
+
+  .credential-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 28px;
+  }
+
+  .credential-list li {
+    font-size: 14px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .credential-list li::before {
+    content: '◆';
+    color: var(--gold);
+    font-size: 8px;
+    flex-shrink: 0;
+  }
+
+  /* ── FAQ ── */
+  .faq { background: var(--white); }
+
+  .faq-header { text-align: center; margin-bottom: 56px; }
+
+  .faq-list {
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--warm);
+    padding: 24px 0;
+  }
+
+  .faq-q {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .faq-a {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* ── FINAL CTA ── */
+  .final-cta {
+    background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
+    text-align: center;
+    padding: 120px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .final-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 100%, rgba(201,168,76,0.15) 0%, transparent 60%);
+  }
+
+  .final-cta h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 5vw, 60px);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 20px;
+    position: relative;
+  }
+
+  .final-cta h2 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .final-cta p {
+    font-size: 18px;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 48px;
+    position: relative;
+  }
+
+  .final-cta .btn-primary {
+    font-size: 15px;
+    padding: 18px 48px;
+    position: relative;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #0f3460;
+    padding: 32px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 32px;
+  }
+
+  .footer-links a {
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: rgba(255,255,255,0.7); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-left > * {
+    animation: fadeUp 0.7s ease both;
+  }
+  .hero-left > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-left > *:nth-child(2) { animation-delay: 0.25s; }
+  .hero-left > *:nth-child(3) { animation-delay: 0.4s; }
+  .hero-left > *:nth-child(4) { animation-delay: 0.55s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .hero-left { padding: 80px 40px; }
+    .problem, .instructor { grid-template-columns: 1fr; }
+    .modules-grid { grid-template-columns: repeat(2, 1fr); }
+    .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+    .forwho-grid { grid-template-columns: 1fr; }
+    .section { padding: 72px 40px; }
+    .proof-bar { padding: 16px 40px; }
+    footer { flex-direction: column; gap: 20px; padding: 32px 40px; }
+  }
+
+  @media (max-width: 640px) {
+    .modules-grid, .pricing-grid { grid-template-columns: 1fr; }
+    .section { padding: 56px 24px; }
+    .hero-left { padding: 60px 24px; }
+    .final-cta { padding: 80px 24px; }
+  }
 </style>
 </head>
 <body>
-<p>Loading...</p>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="eyebrow">New Course — 2026</div>
+    <h1>The HR Professional's<br/>Guide to <em>Claude</em></h1>
+    <p class="hero-subtitle">Learn to use Claude for real HR work — from day one. Whether you're a student, a professional, or a manager, this is the AI course the HR world has been waiting for.</p>
+    <div class="hero-cta-group">
+      <a href="#pricing" class="btn-primary">Enroll Now</a>
+      <a href="#modules" class="btn-ghost">See the curriculum →</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-card">
+      <div class="card-tag">What you'll achieve</div>
+      <div class="card-stat">
+        <span class="stat-num">6</span>
+        <span class="stat-label">hands-on modules</span>
+      </div>
+      <div class="card-divider"></div>
+      <ul class="card-list">
+        <li>Build real HR deliverables in minutes, not hours</li>
+        <li>Turn data into executive-ready narratives</li>
+        <li>Design L&D programs with AI as your co-designer</li>
+        <li>Write consulting proposals that win clients</li>
+        <li>Position yourself as the AI-fluent HR expert</li>
+      </ul>
+    </div>
+    <div class="floating-badge">Enroll today</div>
+  </div>
+</section>
+
+<!-- ── PROOF BAR ── -->
+<div class="proof-bar">
+  <div class="proof-item">6 Modules</div>
+  <div class="proof-dot"></div>
+  <div class="proof-item">Real HR Scenarios</div>
+  <div class="proof-dot"></div>
+  <div class="proof-item">Plug-and-Play Templates</div>
+  <div class="proof-dot"></div>
+  <div class="proof-item">Self-Paced · Learn Anytime</div>
+  <div class="proof-dot"></div>
+  <div class="proof-item">Lifetime Access</div>
+</div>
+
+<!-- ── PROBLEM ── -->
+<section class="section problem">
+  <div>
+    <div class="section-label">The Problem</div>
+    <h2 class="section-title">Everyone in HR is talking about AI. Almost nobody knows how to actually use it.</h2>
+    <p class="section-body">Whether you're just starting out or already working in HR, generic prompts produce generic outputs. And in a field built on people, generic just doesn't cut it.</p>
+    <p class="section-body">The gap between those who know how to direct AI strategically and those who don't is widening fast — and it doesn't matter what level you're at. It starts now.</p>
+    <ul class="pain-list">
+      <li>
+        <div class="pain-icon">✗</div>
+        Spending hours on tasks Claude could do in 20 minutes with the right prompt
+      </li>
+      <li>
+        <div class="pain-icon">✗</div>
+        Getting mediocre outputs because you don't know how to give Claude proper context
+      </li>
+      <li>
+        <div class="pain-icon">✗</div>
+        No course exists that teaches AI specifically for HR tasks — until now
+      </li>
+      <li>
+        <div class="pain-icon">✗</div>
+        Not knowing where to start — with analytics, L&D, recruiting, or OD
+      </li>
+    </ul>
+  </div>
+  <div>
+    <div class="quote-block">
+      <p class="quote-text">"The HR professionals who thrive in the next decade won't be replaced by AI — they'll be the ones who learned to think with it."</p>
+      <div class="quote-author">— Course Creator</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MODULES ── -->
+<section class="section modules" id="modules">
+  <div class="modules-header">
+    <div class="section-label">The Curriculum</div>
+    <h2 class="section-title">Six modules. Six real deliverables.</h2>
+  </div>
+  <div class="modules-grid">
+    <div class="module-card">
+      <div class="module-num">01</div>
+      <div class="module-title">The HR AI Mindset</div>
+      <p class="module-desc">Learn the HR Prompt Framework and understand why most people use AI wrong — and how to fix it instantly.</p>
+      <span class="module-tag">Foundation</span>
+    </div>
+    <div class="module-card">
+      <div class="module-num">02</div>
+      <div class="module-title">Talent Acquisition</div>
+      <p class="module-desc">From job description to offer letter — build a complete recruitment toolkit using Claude in one session.</p>
+      <span class="module-tag">Recruiting</span>
+    </div>
+    <div class="module-card">
+      <div class="module-num">03</div>
+      <div class="module-title">People Analytics</div>
+      <p class="module-desc">Turn raw HR data into executive narratives. Make numbers tell strategic stories that drive decisions.</p>
+      <span class="module-tag">Analytics</span>
+    </div>
+    <div class="module-card">
+      <div class="module-num">04</div>
+      <div class="module-title">Learning & Development</div>
+      <p class="module-desc">Design full L&D programs, workshops, and personalized learning paths with AI as your co-designer.</p>
+      <span class="module-tag">L&D</span>
+    </div>
+    <div class="module-card">
+      <div class="module-num">05</div>
+      <div class="module-title">Organizational Development</div>
+      <p class="module-desc">Culture diagnostics, change management comms, and org design frameworks — built in real time.</p>
+      <span class="module-tag">OD & Change</span>
+    </div>
+    <div class="module-card">
+      <div class="module-num">06</div>
+      <div class="module-title">HR as a Business</div>
+      <p class="module-desc">Write winning consulting proposals, build your LinkedIn presence, and package your expertise for clients.</p>
+      <span class="module-tag">Consulting</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOR WHO ── -->
+<section class="section forwho">
+  <div class="section-label" style="color: var(--gold)">Who This Is For</div>
+  <h2 class="section-title">Built for anyone who wants to work smarter in HR — whatever your level.</h2>
+  <div class="forwho-grid">
+    <div class="forwho-card">
+      <div class="forwho-emoji">🎓</div>
+      <div class="forwho-title">HR Students & Graduates</div>
+      <p class="forwho-desc">Who want to enter the job market with an AI skillset that most experienced professionals don't have yet.</p>
+    </div>
+    <div class="forwho-card">
+      <div class="forwho-emoji">📊</div>
+      <div class="forwho-title">HR & People Professionals</div>
+      <p class="forwho-desc">Who want to move faster, think more strategically, and stop spending hours on tasks Claude can do in minutes.</p>
+    </div>
+    <div class="forwho-card">
+      <div class="forwho-emoji">🌍</div>
+      <div class="forwho-title">Career Changers into HR</div>
+      <p class="forwho-desc">Who are transitioning into people functions and want to hit the ground running with modern, practical skills.</p>
+    </div>
+    <div class="forwho-card">
+      <div class="forwho-emoji">💼</div>
+      <div class="forwho-title">Managers & Business Owners</div>
+      <p class="forwho-desc">Who handle people responsibilities without a dedicated HR team and want AI to help them do it properly.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRICING ── -->
+<section class="section pricing" id="pricing">
+  <div class="pricing-header">
+    <div class="section-label">Pricing</div>
+    <h2 class="section-title">One course. Four ways to engage.</h2>
+  </div>
+  <div style="display:flex; justify-content:center;">
+    <div class="price-card featured" style="max-width:420px; width:100%;">
+      <div class="price-badge">Full Course Access</div>
+      <div class="price-tier">Self-Paced</div>
+      <div class="price-amount">€67</div>
+      <div class="price-period">one-time payment · lifetime access</div>
+      <ul class="price-features">
+        <li>All 6 modules + hands-on exercises</li>
+        <li>24 lessons with real HR scenarios</li>
+        <li>Interactive prompt builder per lesson</li>
+        <li>Full HR template & toolkit library</li>
+        <li>Knowledge checks with instant feedback</li>
+        <li>Free updates as Claude evolves</li>
+      </ul>
+      <a href="#" class="btn-price btn-price-solid">Enroll Now — €67</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── INSTRUCTOR ── -->
+<section class="section instructor" style="grid-template-columns: 1fr;">
+  <div>
+    <div class="section-label">Course Creator</div>
+    <h2 class="section-title">Estelle P. Verny</h2>
+    <p class="section-body">Master's student in Human Resource Management at Universidad Carlos III de Madrid, with a background in Psychology and hands-on experience across training, development, and people-focused roles in the USA, Thailand, and Spain.</p>
+    <p class="section-body">Estelle built this course as someone living the exact challenge her students face — entering the HR world and realising that AI fluency is no longer optional. She couldn't find a course that was practical, honest, and built around real HR tasks rather than theory. So she built it herself.</p>
+    <ul class="credential-list">
+      <li>Master's in HRM — Universidad Carlos III de Madrid (3.96 GPA, current)</li>
+      <li>BS Psychology — Delaware State University, Summa Cum Laude</li>
+      <li>International experience across the USA, Thailand, and Spain</li>
+      <li>People analytics, L&D, and HR research background</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section class="section faq">
+  <div class="faq-header">
+    <div class="section-label">Questions</div>
+    <h2 class="section-title">Everything you need to know</h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q">Do I need a Claude subscription to take this course?</div>
+      <div class="faq-a">You'll need access to Claude — the free tier works for most exercises, but Claude Pro ($20/month) is recommended for the full experience, especially for longer sessions and file analysis.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">I'm not very technical — is this course for me?</div>
+      <div class="faq-a">Absolutely. This course requires zero coding or data science background. If you can write an email, you can learn to prompt Claude effectively. Module 1 starts from scratch.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How long will it take to complete?</div>
+      <div class="faq-a">Each module is designed for 45-minute focused sessions. You can complete the full course in one weekend or spread it over 6 weeks — one module per week.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Will this course be updated as Claude evolves?</div>
+      <div class="faq-a">Yes. Enrolled students get all future updates at no additional cost. AI moves fast and the course will keep pace.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FINAL CTA ── -->
+<section class="final-cta">
+  <h2>The HR world is changing.<br/><em>Start ahead of it.</em></h2>
+  <p>Join students, professionals, and managers already learning to work smarter with Claude.</p>
+  <a href="#pricing" class="btn-primary">Start the Course Today</a>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-brand">Estelle P. Verny</div>
+  <div class="footer-links">
+    <a href="#">LinkedIn</a>
+    <a href="#">Contact</a>
+    <a href="#">Privacy Policy</a>
+  </div>
+</footer>
+
 </body>
 </html>
