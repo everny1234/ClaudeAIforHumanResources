@@ -1548,3 +1548,229 @@ function buildModules() {
           <h2 class="section-heading">Lessons</h2>
           ${m.lessons.map((l, li) => buildLesson(l, mi, li)).join('')}
         </div> 
+        <!-- SCENARIO -->
+        <div class="section-block">
+          <h2 class="section-heading">Real-World Scenario</h2>
+          <div class="scenario-box">
+            <div class="scenario-label">🎯 Scenario Exercise</div>
+            <div class="scenario-title">${m.scenario.title}</div>
+            <p class="scenario-desc">${m.scenario.desc}</p>
+            <div class="scenario-label" style="margin-top:16px">Your Steps</div>
+            <ol class="scenario-steps">
+              ${m.scenario.steps.map((s, si) => `
+                <li><div class="step-num">${si + 1}</div><span>${s}</span></li>
+              `).join('')}
+            </ol>
+          </div>
+        </div>
+
+        <!-- DELIVERABLE -->
+        <div class="section-block">
+          <h2 class="section-heading">Module Deliverable</h2>
+          <div class="deliverable-box">
+            <div class="deliverable-label">✅ What You'll Walk Away With</div>
+            <div class="deliverable-title">${m.deliverable.title}</div>
+            <p class="deliverable-desc">${m.deliverable.desc}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="module-nav-btns">
+        ${mi > 0 ? `<button class="nav-btn nav-btn-prev" onclick="goToModule(${mi - 1})">← Previous Module</button>` : '<div></div>'}
+        <button class="complete-btn" onclick="completeModule(${mi})">✓ Mark Complete</button>
+        ${mi < modules.length - 1 ? `<button class="nav-btn nav-btn-next" onclick="goToModule(${mi + 1})">Next Module →</button>` : '<button class="nav-btn nav-btn-next" onclick="alert(\'🎉 Course complete! You\'ve earned your Claude for HR certificate.\')">🎓 Complete Course</button>'}
+      </div>
+    </div>
+  `).join('');
+}
+
+function buildLesson(l, mi, li) {
+  const hasPromptBuilder = l.promptBuilder;
+  return `
+    <div class="lesson-card" id="lesson-${mi}-${li}">
+      <div class="lesson-header" onclick="toggleLesson(${mi}, ${li})">
+        <div class="lesson-num">${li + 1}</div>
+        <div class="lesson-info">
+          <div class="lesson-title">${l.title}</div>
+          <div class="lesson-duration">⏱ ${l.duration}</div>
+        </div>
+        <div class="lesson-chevron">▼</div>
+      </div>
+      <div class="lesson-body">
+        <div class="lesson-content">
+          <!-- INTRO -->
+          <div class="lesson-section-title">Overview</div>
+          <p class="lesson-text">${l.content.intro}</p>
+
+          <!-- KEY POINTS -->
+          <div class="lesson-section-title">Key Concepts</div>
+          <ul class="lesson-points">
+            ${l.content.points.map(p => `<li>${p}</li>`).join('')}
+          </ul>
+
+          <!-- CONCEPT BOX -->
+          ${l.content.concept ? `
+            <div class="concept-box">
+              <div class="concept-label">${l.content.concept.label}</div>
+              <p class="concept-text">${l.content.concept.text}</p>
+            </div>
+          ` : ''}
+
+          <!-- PROMPT BUILDER -->
+          ${hasPromptBuilder ? buildPromptBuilder(l.promptBuilder, mi, li) : ''}
+
+          <!-- QUIZ -->
+          ${l.quiz ? buildQuiz(l.quiz, mi, li) : ''}
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function buildPromptBuilder(pb, mi, li) {
+  const id = `pb-${mi}-${li}`;
+  return `
+    <div class="prompt-builder" style="margin-top:20px">
+      <div class="pb-header">
+        <div class="pb-title">🛠️ ${pb.title}</div>
+        <div class="pb-badge">Interactive</div>
+      </div>
+      <div class="pb-body">
+        ${pb.fields.map(f => `
+          <div class="pb-field">
+            <div class="pb-label">${f.label} <span class="pb-label-tag">${f.tag}</span></div>
+            ${f.type === 'select' ? `
+              <select class="pb-select" id="${id}-${f.id}">
+                ${f.options.map(o => `<option>${o}</option>`).join('')}
+              </select>
+            ` : f.type === 'textarea' ? `
+              <textarea class="pb-textarea" id="${id}-${f.id}" placeholder="${f.placeholder}"></textarea>
+            ` : `
+              <input class="pb-input" type="text" id="${id}-${f.id}" placeholder="${f.placeholder}"/>
+            `}
+          </div>
+        `).join('')}
+        <button class="pb-btn" onclick="generatePrompt('${id}', ${JSON.stringify(pb.fields).replace(/'/g, "\\'")})">Generate My Claude Prompt →</button>
+        <div class="pb-output" id="${id}-output"></div>
+      </div>
+    </div>
+  `;
+}
+
+function buildQuiz(quiz, mi, li) {
+  const id = `quiz-${mi}-${li}`;
+  return `
+    <div class="quiz-box" style="margin-top:20px">
+      <div class="quiz-header">
+        <div class="quiz-header-title">🎯 Knowledge Check</div>
+      </div>
+      <div class="quiz-body">
+        <div class="quiz-question">${quiz.question}</div>
+        <div class="quiz-options" id="${id}-options">
+          ${quiz.options.map((o, i) => `
+            <div class="quiz-option" id="${id}-opt-${i}" onclick="selectQuizOption('${id}', ${i}, ${quiz.correct})">
+              <input type="radio" name="${id}" value="${i}"/> ${o}
+            </div>
+          `).join('')}
+        </div>
+        <button class="quiz-btn" onclick="checkQuiz('${id}', ${quiz.correct}, ${JSON.stringify(quiz.feedback).replace(/'/g, "\\'")})">Check Answer</button>
+        <div class="quiz-feedback" id="${id}-feedback"></div>
+      </div>
+    </div>
+  `;
+}
+
+function generatePrompt(pbId, fields) {
+  const values = {};
+  fields.forEach(f => {
+    const el = document.getElementById(`${pbId}-${f.id}`);
+    values[f.id] = el ? el.value : '';
+  });
+
+  let prompt = `You are ${values.role || values.jobtitle || '[your role]'}.\n\n`;
+  if (values.context || values.company) prompt += `Context: ${values.context || values.company}\n\n`;
+  if (values.task || values.keyresps) prompt += `Task: ${values.task || values.keyresps}\n\n`;
+  if (values.constraints || values.musthave) prompt += `Constraints/Requirements: ${values.constraints || values.musthave}\n\n`;
+  if (values.format || values.jdtone || values.tone) prompt += `Format/Tone: ${values.format || values.jdtone || values.tone}\n\n`;
+  if (values.problem) prompt += `Core Problem: ${values.problem}\n\n`;
+  if (values.approach) prompt += `Proposed Approach: ${values.approach}\n\n`;
+  if (values.fee) prompt += `Investment: ${values.fee}\n\n`;
+  if (values.client) prompt += `Client: ${values.client}\n\n`;
+
+  const output = document.getElementById(`${pbId}-output`);
+  output.textContent = prompt.trim();
+  output.classList.add('visible');
+}
+
+let selectedAnswers = {};
+
+function selectQuizOption(id, idx, correct) {
+  selectedAnswers[id] = idx;
+  document.querySelectorAll(`#${id}-options .quiz-option`).forEach((el, i) => {
+    el.classList.toggle('selected', i === idx);
+  });
+}
+
+function checkQuiz(id, correct, feedback) {
+  const selected = selectedAnswers[id];
+  if (selected === undefined) { alert('Please select an answer first.'); return; }
+  const fb = document.getElementById(`${id}-feedback`);
+  const isCorrect = selected === correct;
+  document.querySelectorAll(`#${id}-options .quiz-option`).forEach((el, i) => {
+    el.classList.remove('selected', 'correct', 'incorrect');
+    if (i === correct) el.classList.add('correct');
+    else if (i === selected && !isCorrect) el.classList.add('incorrect');
+  });
+  fb.textContent = (isCorrect ? '✓ Correct! ' : '✗ Not quite. ') + feedback;
+  fb.className = `quiz-feedback ${isCorrect ? 'correct' : 'incorrect'} visible`;
+}
+
+function toggleLesson(mi, li) {
+  const card = document.getElementById(`lesson-${mi}-${li}`);
+  card.classList.toggle('open');
+  const navItem = document.getElementById(`lesson-nav-${mi}-${li}`);
+  if (navItem) navItem.classList.toggle('active', card.classList.contains('open'));
+}
+
+function scrollToLesson(e, mi, li) {
+  e.stopPropagation();
+  goToModule(mi);
+  setTimeout(() => {
+    const el = document.getElementById(`lesson-${mi}-${li}`);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (!el.classList.contains('open')) el.querySelector('.lesson-header').click();
+    }
+  }, 100);
+}
+
+function goToModule(idx) {
+  document.querySelectorAll('.module-page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.module-nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById(`module-${idx}`).classList.add('active');
+  document.getElementById(`nav-item-${idx}`).classList.add('active');
+  currentModule = idx;
+  document.getElementById('main-content').scrollTop = 0;
+}
+
+function completeModule(idx) {
+  completedModules.add(idx);
+  const navItem = document.getElementById(`nav-item-${idx}`);
+  navItem.classList.add('completed');
+  const num = navItem.querySelector('.nav-num');
+  num.textContent = '';
+  updateProgress();
+  if (idx < modules.length - 1) goToModule(idx + 1);
+}
+
+function updateProgress() {
+  const pct = Math.round((completedModules.size / modules.length) * 100);
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('progress-pct').textContent = pct + '%';
+}
+
+buildNav();
+buildModules();
+</script>
+</body>
+</html>
