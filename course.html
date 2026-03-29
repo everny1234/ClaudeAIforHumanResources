@@ -1790,6 +1790,8 @@ function buildPromptBuilder(pb, mi, li) {
 
 function buildQuiz(quiz, mi, li) {
   const id = `quiz-${mi}-${li}`;
+  window._quizData = window._quizData || {};
+  window._quizData[id] = { correct: quiz.correct, feedback: quiz.feedback, options: quiz.options };
   return `
     <div class="quiz-box" style="margin-top:20px">
       <div class="quiz-header">
@@ -1799,47 +1801,96 @@ function buildQuiz(quiz, mi, li) {
         <div class="quiz-question">${quiz.question}</div>
         <div class="quiz-options" id="${id}-options">
           ${quiz.options.map((o, i) => `
-            <div class="quiz-option" id="${id}-opt-${i}" onclick="selectQuizOption('${id}', ${i}, ${quiz.correct})">
-              <input type="radio" name="${id}" value="${i}"/> ${o}
+            <div class="quiz-option" id="${id}-opt-${i}" onclick="selectQuizOption('${id}', ${i})">
+              <input type="radio" name="${id}" value="${i}" style="pointer-events:none;"/> ${o}
             </div>
           `).join('')}
         </div>
-        <button class="quiz-btn" onclick="checkQuiz('${id}', ${quiz.correct}, ${JSON.stringify(quiz.feedback).replace(/'/g, "\\'")})">Check Answer</button>
+        <button class="quiz-btn" onclick="checkQuiz('${id}')">Check Answer</button>
         <div class="quiz-feedback" id="${id}-feedback"></div>
       </div>
     </div>
   `;
 }
 
-function generatePrompt(pbId, fields) {
+function generatePrompt(pbId) {
+  const fields = (window._pbFields && window._pbFields[pbId]) || [];
   const values = {};
   fields.forEach(f => {
-    const el = document.getElementById(`${pbId}-${f.id}`);
-    values[f.id] = el ? el.value : '';
+    const el = document.getElementById(pbId + '-' + f.id);
+    values[f.id] = el ? el.value.trim() : '';
   });
 
-  let prompt = `You are ${values.role || values.jobtitle || '[your role]'}.\n\n`;
-  if (values.context || values.company) prompt += `Context: ${values.context || values.company}\n\n`;
-  if (values.task || values.keyresps) prompt += `Task: ${values.task || values.keyresps}\n\n`;
-  if (values.constraints || values.musthave) prompt += `Constraints/Requirements: ${values.constraints || values.musthave}\n\n`;
-  if (values.format || values.jdtone || values.tone) prompt += `Format/Tone: ${values.format || values.jdtone || values.tone}\n\n`;
-  if (values.problem) prompt += `Core Problem: ${values.problem}\n\n`;
-  if (values.approach) prompt += `Proposed Approach: ${values.approach}\n\n`;
-  if (values.fee) prompt += `Investment: ${values.fee}\n\n`;
-  if (values.client) prompt += `Client: ${values.client}\n\n`;
+  const lines = [];
+  const role = values.role || values.jobtitle || '';
+  if (role) lines.push('You are a ' + role + '.\n');
+  else lines.push('You are an experienced HR professional.\n');
+  const ctx = values.context || values.company || '';
+  if (ctx) lines.push('Context: ' + ctx + '\n');
+  const task = values.task || values.keyresps || '';
+  if (task) lines.push('Task: ' + task + '\n');
+  const constraints = values.constraints || values.musthave || '';
+  if (constraints) lines.push('Constraints: ' + constraints + '\n');
+  const fmt = values.format || values.jdtone || values.tone || '';
+  if (fmt) lines.push('Format / Tone: ' + fmt + '\n');
+  if (values.client) lines.push('Client: ' + values.client + '\n');
+  if (values.problem) lines.push('Core Problem: ' + values.problem + '\n');
+  if (values.approach) lines.push('Approach: ' + values.approach + '\n');
+  if (values.fee) lines.push('Investment: ' + values.fee + '\n');
+  if (lines.length <= 1) lines.push('[Fill in the fields above to generate your prompt]');
+  lines.push('\nProduce a professional, detailed output based on the above.');
 
-  const output = document.getElementById(`${pbId}-output`);
-  output.textContent = prompt.trim();
-  output.classList.add('visible');
+  const output = document.getElementById(pbId + '-output');
+  if (output) {
+    output.textContent = lines.join('\n').trim();
+    output.classList.add('visible');
+  }
 }
 
 let selectedAnswers = {};
 
-function selectQuizOption(id, idx, correct) {
+function selectQuizOption(id, idx) {
   selectedAnswers[id] = idx;
-  document.querySelectorAll(`#${id}-options .quiz-option`).forEach((el, i) => {
+  document.querySelectorAll('#' + id + '-options .quiz-option').forEach(function(el, i) {
+    el.classList.remove('selected', 'correct', 'incorrect');
     el.classList.toggle('selected', i === idx);
   });
+}
+
+function checkQuiz(id) {
+  const data = window._quizData && window._quizData[id];
+  if (!data) return;
+  const selected = selectedAnswers[id];
+  if (selected === undefined) {
+    alert('Please select an answer first.');
+    return;
+  }
+  const correct = data.correct;
+  const feedback = data.feedback;
+  const isCorrect = selected === correct;
+
+  document.querySelectorAll('#' + id + '-options .quiz-option').forEach(function(el, i) {
+    el.classList.remove('selected', 'correct', 'incorrect');
+    if (i === correct) {
+      el.classList.add('correct');
+    } else if (i === selected && !isCorrect) {
+      el.classList.add('incorrect');
+    }
+  });
+
+  const fb = document.getElementById(id + '-feedback');
+  if (fb) {
+    const correctText = data.options[correct];
+    if (isCorrect) {
+      fb.innerHTML = '<strong>✓ Correct!</strong> ' + feedback;
+      fb.className = 'quiz-feedback correct visible';
+    } else {
+      fb.innerHTML = '<strong>✗ Not quite.</strong> ' + feedback + '<br/><br/><strong>✓ The correct answer is:</strong> ' + correctText;
+      fb.className = 'quiz-feedback incorrect visible';
+    }
+  }
+}
+});
 }
 
 function checkQuiz(id, correct, feedback) {
