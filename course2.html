@@ -802,3 +802,565 @@ const modules = [
         }
       }
     ],
+    scenario:{
+      title:'"The Attrition Alarm"',
+      desc:"Monday morning. Your CEO walks into your office with a printout. Engineering attrition hit 31% last quarter. The CTO is furious. The CEO wants a full analysis, root cause hypothesis, and retention plan on their desk by end of week. You have the raw data. You have Claude. You have 4 days.",
+      steps:["Anonymize your attrition dataset and segment it by tenure, performance, and manager","Use Claude to analyze the segments and generate root cause hypotheses","Cross-reference with exit interview themes using Claude to identify the top 3 drivers","Build a retention strategy recommendation with Claude — 3 interventions, timeline, expected impact","Draft the executive brief using Claude — CEO-ready, 1 page, Finding then So What then Now What structure"]
+    },
+    deliverable:{title:"People Analytics Narrative Toolkit",desc:"An executive-ready analytics narrative template for attrition, engagement, and ROI reporting plus a prompt library of 15 analytics prompts for the most common HR data scenarios you will face."}
+  },
+  {
+    id:4, title:"Learning & Development", subtitle:"Design Faster, Deliver Better",
+    duration:"45 min", tag:"L&D",
+    desc:"Use Claude as your co-designer to build L&D programs, workshops, microlearning content, and personalized development plans in a fraction of the time it used to take.",
+    objectives:[
+      {icon:"🎓",title:"Design Full L&D Programs",desc:"Build end-to-end learning programs aligned to business objectives and skill development needs."},
+      {icon:"🛠️",title:"Create Workshop Facilitation Guides",desc:"Develop detailed facilitation plans that any trainer can pick up and deliver confidently."},
+      {icon:"📱",title:"Build Microlearning Content",desc:"Convert complex topics into bite-sized engaging learning experiences for busy employees."},
+      {icon:"📈",title:"Measure L&D Effectiveness",desc:"Design evaluation frameworks that prove the business impact of your learning investments."}
+    ],
+    lessons:[
+      {
+        title:"Instructional Design Principles Claude Needs to Help You", duration:"8 min",
+        content:{
+          intro:"Claude can design incredible learning experiences — but only if you brief it with solid instructional design principles. This lesson gives you the frameworks to direct Claude effectively as an L&D co-designer.",
+          points:["Bloom's Taxonomy: Learning objectives should span remembering, understanding, applying, analyzing, evaluating, and creating. Most L&D stops at understanding.","70-20-10 Model: 70% of learning happens on the job, 20% from others, 10% from formal training. Your programs should reflect this.","Adult Learning Principles: Adults learn best when they understand why, can relate to their experience, and can apply immediately. Design for relevance not theory.","Spaced repetition: one-time training has 90% forgetting rate within a week. Build in reinforcement touchpoints.","When prompting Claude for L&D: always specify the learner profile, business objective, learning modality, and measurement approach."],
+          concept:{label:"The L&D Prompt Brief",text:"Tell Claude: Design a program type for learner profile at company type. Business objective is the specific outcome. Learning modality is workshop or self-paced or blended. Duration is the time available. Apply adult learning principles and include learning objectives at application level or above, session flow with timings, facilitator notes, and a measurement approach using Kirkpatrick Level 2 and 3."}
+        },
+        quiz:{
+          question:"A manager asks you to design a 2-hour compliance training that employees will actually remember and use. What is the most important design principle to apply?",
+          options:["Include a quiz at the end to test retention","Design for application — use realistic scenarios and practice not just information delivery","Make the content as comprehensive as possible","Use high-quality video production values"],
+          correct:1,
+          feedback:"Compliance training fails not because employees are not paying attention but because it is designed for information delivery rather than behavior change. Designing for application means using realistic scenarios, having participants practice the correct response, and following up with reinforcement. Claude can build this kind of scenario-based compliance training in minutes."
+        }
+      },
+      {
+        title:"Building a New Manager Development Program", duration:"12 min",
+        content:{
+          intro:"The transition from individual contributor to manager is one of the most critical and most undersupported career transitions in any organization. A well-designed new manager program reduces early failures, improves team performance, and builds your leadership pipeline.",
+          points:["New managers fail most often in 3 areas: having difficult conversations, shifting from doing to leading, and managing performance.","A 4-week program is the minimum viable intervention. 90 days is the gold standard.","Content should be immediately applicable — each session should produce a tool, conversation, or action the manager takes that week.","Peer learning cohorts — small groups of new managers learning together — dramatically improve retention and accountability.","Claude can build the full curriculum, session facilitator guides, and manager toolkits in one conversation."],
+          concept:{label:"New Manager Program Prompt",text:"Tell Claude: Design a 4-week New Manager Development Program for first-time managers at company type. Key challenges they face: difficult conversations, delegation, and performance management. Format: weekly 2-hour workshops plus one action challenge per week. Include session objectives, agenda with timings, facilitator notes, discussion questions, and a take-away tool for each session. Apply 70-20-10 principles."}
+        },
+        quiz:{
+          question:"Your new manager program ends with a satisfaction survey. 92% of participants rate it excellent. Six months later their teams' engagement scores have not improved. What went wrong?",
+          options:["The training content was incorrect","The program measured reaction Level 1 but did not design for behavior change Level 3","Six months is not enough time to see results","Engagement is affected by too many factors for training to impact it"],
+          correct:1,
+          feedback:"This is the classic L&D trap: optimizing for participant satisfaction which is Kirkpatrick Level 1 rather than behavior change which is Level 3 and results which is Level 4. A program that feels great but does not change what managers do on Monday morning has failed its purpose. Design for behavior change from the start: what specific actions will managers take differently?"
+        }
+      },
+      {
+        title:"Measuring L&D Effectiveness — The Kirkpatrick Model with Claude", duration:"10 min",
+        content:{
+          intro:"Most L&D measurement stops at did they like it? The Kirkpatrick model gives you a framework to measure actual business impact — and Claude can help you design the measurement system before you build the program.",
+          points:["Level 1 Reaction: Did participants find it relevant and engaging? Measure with post-training survey. Easy but least meaningful.","Level 2 Learning: Did knowledge or skills actually improve? Measure with pre and post assessment and skills demonstration.","Level 3 Behavior: Are they applying it on the job? Measure with manager observation, 30/60/90 day check-ins, and peer feedback.","Level 4 Results: Did it impact business outcomes? Measure the KPI you identified at program design such as attrition, productivity, or error rates.","Start with Level 4: identify the business outcome first then work backwards to design the program and measurement approach."],
+          concept:{label:"The Measurement Design Prompt",text:"Tell Claude: Design a full measurement framework for a program type targeting learner profile. Using the Kirkpatrick 4-Level model define specific metrics for each level, data collection method and timing, survey questions for Level 1 and 2, behavior indicators for Level 3, and the business KPI for Level 4. Include a measurement timeline and a reporting template for leadership."}
+        },
+        quiz:{
+          question:"You are designing a leadership development program. In what order should you approach design and measurement?",
+          options:["Design the program then measure what is easy to measure afterward","Define the Level 4 business outcome first then work backwards to design program and measurement","Measure baseline data then design program to address gaps","Run the program then decide what to measure based on what changed"],
+          correct:1,
+          feedback:"Always start with Level 4. What business outcome do you need to move? Once you have defined that such as reduce regrettable attrition in managed teams by 15% you work backwards: what behaviors at Level 3 would drive that outcome? What knowledge and skills at Level 2 underpin those behaviors? Then design the program to develop exactly those skills and your measurement plan is already built in."
+        }
+      }
+    ],
+    scenario:{
+      title:'"New Manager Panic"',
+      desc:"Six individual contributors just got promoted to manager on the same day. Your Head of HR calls: We need a development program running within 3 weeks. 4 sessions, practical, focused on what they will actually face in month one. You have a blank slide deck and Claude.",
+      steps:["Identify the 4 highest-priority new manager challenges using Claude analysis","Design the 4-session program structure with objectives, agenda, and outcomes per session","Build a full facilitation guide for Session 1 — Claude does the first draft and you refine","Create a manager action challenge for each session — the thing they do before the next meeting","Design the measurement framework: what will you measure at 30, 60, and 90 days?"]
+    },
+    deliverable:{title:"Complete L&D Program Toolkit",desc:"A full L&D toolkit: New Manager Development Program outline for 4 sessions, one complete facilitation guide, a microlearning series template, and a Kirkpatrick measurement framework — all ready to customize and deploy."}
+  },
+  {
+    id:5, title:"Organizational Development", subtitle:"Culture, Change & Org Design",
+    duration:"45 min", tag:"OD & Change",
+    desc:"Tackle the most complex HR challenges — culture integration, change management, and organizational diagnostics — with Claude as your strategic thinking partner.",
+    objectives:[
+      {icon:"🔬",title:"Diagnose Organizational Challenges",desc:"Use structured frameworks to identify the real problem beneath the presenting symptoms."},
+      {icon:"📢",title:"Build Change Communication Plans",desc:"Design communications that reduce resistance and build genuine commitment to change."},
+      {icon:"🧬",title:"Design Culture Frameworks",desc:"Define and operationalize values, behaviors, and culture measurement systems."},
+      {icon:"🗺️",title:"Create Culture Integration Plans",desc:"Navigate mergers, acquisitions, and reorgs with a structured human-centered approach."}
+    ],
+    lessons:[
+      {
+        title:"Organizational Diagnostic: Finding the Real Problem", duration:"10 min",
+        content:{
+          intro:"In OD the presenting problem is rarely the real problem. A communication issue is usually a trust issue. A performance issue is usually a clarity or capability issue. A culture issue is usually a leadership behavior issue. Diagnosis before prescription is the most important OD skill you can develop.",
+          points:["The McKinsey 7S Framework: Strategy, Structure, Systems, Shared Values, Style, Staff, and Skills — change in one area creates pressure in all others.","The Burke-Litwin Model distinguishes between transformational factors such as leadership, culture, and mission and transactional factors such as structure, systems, and climate.","Root cause analysis in OD: ask why five times before proposing a solution. The first answer is almost never the root cause.","Data sources for diagnosis: engagement surveys, exit interviews, performance data, org chart analysis, leadership observations, and focus groups.","Claude can help you build diagnostic interview questions, analyze qualitative data, and map findings to OD frameworks."],
+          concept:{label:"The Diagnostic Prompt",text:"Tell Claude: Act as an OD consultant. I am diagnosing this organizational challenge at a company description. Symptoms observed are listed. Using the Burke-Litwin model help me identify which organizational levers are most likely driving these symptoms, generate 10 diagnostic interview questions to test these hypotheses, and define what data I should collect to confirm the diagnosis. Format as a diagnostic plan."}
+        },
+        quiz:{
+          question:"A business unit leader tells you: We have a communication problem — people do not know what is going on. Before prescribing a solution what is your most important diagnostic question?",
+          options:["What communication channels are you currently using?","What specifically are people not knowing — and what are the consequences of that?","How often does leadership communicate to the team?","Have you considered a company newsletter?"],
+          correct:1,
+          feedback:"Communication problem is almost always a symptom not a cause. Prescribing more newsletters or town halls without diagnosis usually fails. What specifically are people not knowing helps you understand whether this is actually an information flow problem, a trust problem, a clarity problem, or a leadership behavior problem."
+        }
+      },
+      {
+        title:"Change Management Communications That Actually Land", duration:"12 min",
+        content:{
+          intro:"Most change management communication fails because it is designed to inform not to persuade. People do not resist change because they do not understand it — they resist it because they are afraid of what it means for them. Effective change comms addresses that fear directly.",
+          points:["WIIFM — What Is In It For Me — is the first question every employee asks. Answer it in the first paragraph not the last.","Kotter's 8-Step Model: create urgency, build coalition, form strategic vision, enlist volunteers, enable action, generate wins, sustain acceleration, and institute change.","The ADKAR Model — Awareness, Desire, Knowledge, Ability, Reinforcement — maps individual change readiness and is useful for targeting your comms.","Change comms must be honest about what is uncertain. Pretending you have all the answers destroys trust when reality differs.","Sequence matters: leaders hear first, then managers who are briefed to answer questions, then employees. Never the reverse."],
+          concept:{label:"The Change Comms Prompt",text:"Tell Claude: Write a change communication plan for this change initiative at this company. Affected employees are the number and profile. Key concerns they will have are listed. Apply ADKAR: write 5 communications — one per ADKAR stage — covering what the change is, why it is happening, what it means for employees specifically, what support is available, and how progress will be communicated. Tone: honest, direct, human."}
+        },
+        quiz:{
+          question:"You are rolling out a new performance management system. Early employee feedback is extremely negative — people feel blindsided. What change management principle was most likely violated?",
+          options:["The system design was not good enough","Employees were not involved in the process or given advance communication — awareness and desire stages were skipped","The training was not comprehensive enough","Leadership did not mandate adoption strongly enough"],
+          correct:1,
+          feedback:"Feeling blindsided is the clearest signal that the Awareness and Desire stages of ADKAR were skipped. People were moved straight to implementation without building understanding of why the change was needed and creating genuine commitment to it. Change that skips these stages generates resistance that can undermine even well-designed systems."
+        }
+      },
+      {
+        title:"Culture Design: Values, Behaviors, and Measurement", duration:"10 min",
+        content:{
+          intro:"Culture is often treated as something that just happens. In reality culture is designed — either intentionally or by default. The best organizations intentionally design culture and then measure whether it is actually being lived.",
+          points:["Values without behaviors are decoration. For every value define 3-4 observable behaviors that demonstrate it in action.","The culture gap is the difference between stated values and lived experience. This gap is measured by engagement surveys and revealed by what leaders actually do.","Culture is created by what leaders reward, what they tolerate, and what they celebrate. Formal values matter less than leadership behavior.","Culture measurement: behavioral frequency surveys, 360 feedback aligned to values, and culture add interviews in hiring.","Claude can help you design the full culture system: value definitions, behavioral indicators, culture survey questions, and culture add interview frameworks."],
+          concept:{label:"The Culture Design Prompt",text:"Tell Claude: Help me design a culture framework for this company type. Based on these organizational goals suggest 4-5 core values with definitions. For each value define 3 observable behaviors at employee level and 3 at leadership level. Write 5 culture survey questions per value using behavioral frequency scale. Write 2 culture add interview questions per value. Format as a complete culture playbook."}
+        },
+        quiz:{
+          question:"Your company's stated value is Integrity. An employee notices that a manager who missed targets was promoted anyway due to their relationship with the CEO. What is the culture impact?",
+          options:["Minimal — one incident does not define culture","Significant — employees learn that stated values do not apply to those with power destroying credibility of all stated values","Moderate — it depends on whether employees know about the promotion","Positive — it shows the company values loyalty and relationships"],
+          correct:1,
+          feedback:"Culture is learned through observation of what actually happens not what is written on a wall. When employees see that integrity is selectively applied or that performance accountability does not apply to people with connections they rationally conclude that stated values are aspirational at best and cynically performative at worst. This kind of incident requires visible leadership response to prevent culture erosion."
+        }
+      }
+    ],
+    scenario:{
+      title:'"The Merger Chaos"',
+      desc:"Your company just acquired a 300-person competitor. The combined organization is 800 people, two cultures, two leadership teams, and significant redundancy in some functions. You have 90 days before the integration becomes visible to customers. HR owns the people workstream. You own HR.",
+      steps:["Use Claude to conduct a rapid culture diagnostic of both organizations from the information available","Choose your integration strategy and use Claude to build the rationale for leadership","Build the 90-day communication plan — what do employees hear, when, from whom","Design the listening program: pulse surveys, focus groups, and leadership interviews","Create the culture integration workstream charter with owner, deliverables, and 30/60/90 day milestones"]
+    },
+    deliverable:{title:"OD & Change Management Toolkit",desc:"A complete OD toolkit: organizational diagnostic framework, change communication plan template using ADKAR, culture design playbook covering values to behaviors to measurement, and a 90-day merger integration plan template."}
+  },
+  {
+    id:6, title:"HR as a Business", subtitle:"Consulting, Proposals & Personal Brand",
+    duration:"45 min", tag:"Consulting",
+    desc:"Use Claude to position yourself as a premium HR consultant — write proposals that win, build a LinkedIn presence that attracts clients, and package your expertise into productized services.",
+    objectives:[
+      {icon:"💼",title:"Write Winning Consulting Proposals",desc:"Create professional persuasive proposals that demonstrate strategic value and close clients."},
+      {icon:"📊",title:"Build Client-Ready Reports",desc:"Transform raw findings and notes into polished HR audit reports and strategic recommendations."},
+      {icon:"🌐",title:"Build Your LinkedIn Presence",desc:"Create a 30-day content strategy that positions you as a credible HR thought leader."},
+      {icon:"📦",title:"Productize Your HR Expertise",desc:"Package your knowledge into scalable service offerings that generate income beyond your time."}
+    ],
+    lessons:[
+      {
+        title:"Writing HR Consulting Proposals That Win", duration:"10 min",
+        content:{
+          intro:"Most consulting proposals fail because they describe the consultant not the client's problem. A winning proposal demonstrates that you understand the client's world better than they do and that your solution is the obvious answer.",
+          points:["Structure: Executive Summary, Problem Diagnosis, Proposed Approach, Deliverables, Timeline, Investment, and About You.","Lead with the problem not your services. The first page should make the client feel heard and understood.","Be specific about deliverables. HR Strategy is not a deliverable. A 12-month People Strategy document with 5 strategic priorities, KPIs, and a Q1 implementation roadmap is a deliverable.","The investment section should frame cost against the cost of inaction: For 8,500 euros we address an attrition problem estimated to cost you 240,000 euros annually.","Claude can generate a first-draft proposal in under 5 minutes from a discovery call briefing — you refine and personalize."],
+          concept:{label:"The Proposal Prompt",text:"Tell Claude: Write a consulting proposal for this prospect description. Their core problem is the specific challenge. My proposed solution is the approach. Deliverables are the list. Timeline is the duration. Investment is the fee. Format: executive summary, problem statement, proposed approach, detailed deliverables, timeline, investment with ROI framing, and a brief about me section. Tone: strategic, confident, client-focused."}
+        },
+        promptBuilder:{
+          title:"Build Your Consulting Proposal",
+          fields:[
+            {id:"client",label:"Client Description",tag:"Who they are",type:"textarea",placeholder:"e.g. 200-person SaaS startup in Madrid, Series B, HR team of 2, high growth phase, no formal HR strategy"},
+            {id:"problem",label:"Core Problem",tag:"Their challenge",type:"textarea",placeholder:"e.g. 34% attrition in engineering, no structured onboarding, ad-hoc performance management"},
+            {id:"approach",label:"Your Approach",tag:"Your solution",type:"textarea",placeholder:"e.g. 12-week HR Foundation engagement: HR audit, people strategy, onboarding program, performance framework"},
+            {id:"fee",label:"Investment",tag:"Your fee",type:"input",placeholder:"e.g. 12,500 euros for 12-week engagement"},
+            {id:"tone",label:"Proposal Tone",tag:"Voice",type:"select",options:["Strategic and authoritative","Warm and collaborative","Data-driven and precise","Bold and direct"]}
+          ]
+        },
+        quiz:{
+          question:"A prospect says your proposal is too expensive. What is the most effective response?",
+          options:["Reduce your fee to close the deal","Reframe the investment against the cost of the problem you are solving","Add more deliverables to justify the price","Explain your qualifications in more detail"],
+          correct:1,
+          feedback:"Price objections are almost always framing problems not budget problems. If a client says 8,500 euros is too expensive ask: What is your current attrition costing you annually? When the answer is 200,000 euros your fee looks very different. Claude can help you build the ROI reframe into your proposal so price objections are pre-handled before they arise."
+        }
+      },
+      {
+        title:"LinkedIn Content Strategy for HR Consultants", duration:"12 min",
+        content:{
+          intro:"LinkedIn is where HR buyers live. CHROs, HR Directors, and L&D Heads are all on LinkedIn consuming content daily. A consistent strategic LinkedIn presence is the most cost-effective client acquisition tool available to an independent HR consultant.",
+          points:["Post 3 times per week: one educational post, one opinion or insight, and one personal story or behind-the-scenes.","The best performing HR content on LinkedIn: counterintuitive takes, specific data with commentary, short frameworks with a visual, and what I learned from stories.","Your positioning statement — what you do, for whom, with what outcome — should be in your headline and About section not just your job title.","Engagement before broadcast: spend 15 minutes commenting meaningfully on 5 posts before you post your own. This amplifies reach significantly.","Claude can generate a full 30-day LinkedIn content calendar in one prompt with post drafts, hooks, and hashtag strategy."],
+          concept:{label:"The LinkedIn Content Prompt",text:"Tell Claude: Create a 30-day LinkedIn content calendar for an HR consultant specializing in this niche targeting this audience. Include 3 posts per week — educational, insight and opinion, and personal story. For each post provide a hook as the first line, full post draft, 3 hashtags, and a call to action. Tone: expert but human, not corporate. Vary formats: text, list, story, and framework."}
+        },
+        quiz:{
+          question:"Your LinkedIn post about people analytics gets 12 likes and 3 comments after 24 hours. What is the most likely problem?",
+          options:["The topic is not interesting to your audience","The hook — the first line — did not create enough curiosity to stop the scroll","You do not have enough followers yet","You posted at the wrong time of day"],
+          correct:1,
+          feedback:"On LinkedIn the first 1-2 lines determine whether anyone reads your post because that is all that shows before the see more cut-off. A weak hook that does not create curiosity, challenge an assumption, or promise value means most people scroll past without clicking through. Claude can help you write 5 alternative hooks for any post."
+        }
+      },
+      {
+        title:"Productizing Your HR Expertise", duration:"8 min",
+        content:{
+          intro:"Selling only your time is a ceiling. The most successful HR consultants package their expertise into products and programs that generate revenue while they sleep or while they are working with another client.",
+          points:["The productization ladder: 1:1 consulting at the highest price and lowest scale, then group programs and cohorts, then online courses, then templates and toolkits, then books and guides at the lowest price and highest scale.","Start with what you already deliver in 1:1 work. What do you build for every client? That is your first product.","Templates and toolkits are the easiest entry point: 27 to 97 euros, zero ongoing delivery required, and passive income from day 1.","Group programs with 5 to 10 clients on the same program delivered simultaneously increase revenue 3 to 5 times with minimal additional time.","Claude can help you package, name, price, and write the sales page for any productized offering in one session."],
+          concept:{label:"The Product Design Prompt",text:"Tell Claude: Help me productize my HR consulting expertise in this niche. My 1:1 clients typically need these deliverables. Design 3 productized offerings at different price points: a low-ticket toolkit at 27 to 97 euros, a mid-ticket group program at 297 to 997 euros, and a high-ticket consulting package at 2,500 euros or more. For each provide the name, what is included, who it is for, the price rationale, and a 3-sentence sales description."}
+        },
+        quiz:{
+          question:"You charge 150 euros per hour for 1:1 HR consulting. You want to 5x your income without working 5x more hours. What is the most effective strategy?",
+          options:["Increase your hourly rate to 750 euros","Create a group program that delivers similar value to 8 clients simultaneously for 500 euros each","Take on 5x more clients by working more hours","Hire subcontractors to deliver work while you sell"],
+          correct:1,
+          feedback:"Group programs are the highest-leverage move for independent consultants. If you currently deliver a 4-session coaching program 1:1 for 600 euros the same program delivered to 8 people simultaneously earns 4,800 euros for the same 4 sessions. You have 8x the revenue for the same time investment. Claude can help you restructure any 1:1 offering into a group format."
+        }
+      }
+    ],
+    scenario:{
+      title:'"The Cold Proposal"',
+      desc:"A 200-person tech startup in Barcelona messages you on LinkedIn: We have no HR function, 34% attrition last year, and we are about to close a Series B. We need help. Can you send us something? This is your shot. Write the proposal that wins the engagement.",
+      steps:["Use Claude to structure a discovery brief from the information you have","Build the full consulting proposal using the proposal prompt framework","Create the ROI framing: what is 34% attrition costing them annually?","Write 3 LinkedIn posts announcing you have taken on a new client without naming them to build social proof","Design a productized HR Foundation Package you can pitch to similar startups in future"]
+    },
+    deliverable:{title:"HR Consulting Business Toolkit",desc:"Your complete consulting launch kit: a winning proposal template, client report structure, 30-day LinkedIn content calendar with 12 post drafts, and 3 productized service offering descriptions — ready to sell."}
+  }
+];
+
+// ─────────────────────────────────────────
+// STATE
+// ─────────────────────────────────────────
+let currentModule = 0;
+let completedModules = new Set();
+window._quizData = {};
+window._pbFields = {};
+
+// ─────────────────────────────────────────
+// BUILD NAV
+// ─────────────────────────────────────────
+function buildNav() {
+  const nav = document.getElementById('module-nav');
+  nav.innerHTML = modules.map((m, i) => `
+    <button class="module-nav-item ${i === 0 ? 'active' : ''}" onclick="goToModule(${i})" id="nav-item-${i}">
+      <div class="module-nav-header">
+        <div class="nav-num" id="nav-num-${i}">${i + 1}</div>
+        <div class="nav-info">
+          <div class="nav-title">${m.title}</div>
+          <div class="nav-meta">${m.duration} · ${m.tag}</div>
+        </div>
+      </div>
+      <div class="lesson-nav">
+        ${m.lessons.map((l, j) => `
+          <div class="lesson-nav-item" onclick="scrollToLesson(event,${i},${j})" id="lesson-nav-${i}-${j}">${l.title}</div>
+        `).join('')}
+      </div>
+    </button>
+  `).join('');
+}
+
+// ─────────────────────────────────────────
+// BUILD MODULES
+// ─────────────────────────────────────────
+function buildModules() {
+  const main = document.getElementById('main-content');
+  main.innerHTML = modules.map((m, mi) => `
+    <div class="module-page ${mi === 0 ? 'active' : ''}" id="module-${mi}">
+      <div class="module-header">
+        <div class="module-eyebrow">Module ${mi + 1} · ${m.tag}</div>
+        <h1 class="module-title-main">${m.title} — <em>${m.subtitle}</em></h1>
+        <p class="module-desc-main">${m.desc}</p>
+        <div class="module-meta-bar">
+          <div class="meta-pill">⏱ Duration: <span>${m.duration}</span></div>
+          <div class="meta-pill">📚 Lessons: <span>${m.lessons.length}</span></div>
+          <div class="meta-pill">🎯 Tag: <span>${m.tag}</span></div>
+        </div>
+      </div>
+      <div class="content-body">
+        <div class="section-block">
+          <h2 class="section-heading">Learning Objectives</h2>
+          <div class="objectives-grid">
+            ${m.objectives.map(o => `
+              <div class="objective-card">
+                <div class="objective-icon">${o.icon}</div>
+                <div class="objective-title">${o.title}</div>
+                <div class="objective-desc">${o.desc}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+        <div class="section-block">
+          <h2 class="section-heading">Lessons</h2>
+          ${m.lessons.map((l, li) => buildLesson(l, mi, li)).join('')}
+        </div>
+        <div class="section-block">
+          <h2 class="section-heading">Real-World Scenario</h2>
+          <div class="scenario-box">
+            <div class="scenario-label">🎯 Scenario Exercise</div>
+            <div class="scenario-title">${m.scenario.title}</div>
+            <p class="scenario-desc">${m.scenario.desc}</p>
+            <div class="scenario-label" style="margin-top:16px">Your Steps</div>
+            <ol class="scenario-steps">
+              ${m.scenario.steps.map((s, si) => `<li><div class="step-num">${si + 1}</div><span>${s}</span></li>`).join('')}
+            </ol>
+          </div>
+        </div>
+        <div class="section-block">
+          <h2 class="section-heading">Module Deliverable</h2>
+          <div class="deliverable-box">
+            <div class="deliverable-label">✅ What You Will Walk Away With</div>
+            <div class="deliverable-title">${m.deliverable.title}</div>
+            <p class="deliverable-desc">${m.deliverable.desc}</p>
+          </div>
+        </div>
+      </div>
+      <div class="module-nav-btns">
+        ${mi > 0 ? `<button class="nav-btn nav-btn-prev" onclick="goToModule(${mi-1})">← Previous Module</button>` : '<div></div>'}
+        <button class="complete-btn" onclick="completeModule(${mi})">✓ Mark Complete</button>
+        ${mi < modules.length - 1
+          ? `<button class="nav-btn nav-btn-next" onclick="goToModule(${mi+1})">Next Module →</button>`
+          : `<button class="nav-btn nav-btn-next" onclick="showCertificate()">🎓 Get My Certificate</button>`}
+      </div>
+    </div>
+  `).join('');
+}
+
+// ─────────────────────────────────────────
+// BUILD LESSON
+// ─────────────────────────────────────────
+function buildLesson(l, mi, li) {
+  return `
+    <div class="lesson-card" id="lesson-${mi}-${li}">
+      <div class="lesson-header" onclick="toggleLesson(${mi},${li})">
+        <div class="lesson-num">${li + 1}</div>
+        <div class="lesson-info">
+          <div class="lesson-title">${l.title}</div>
+          <div class="lesson-duration">⏱ ${l.duration}</div>
+        </div>
+        <div class="lesson-chevron">▼</div>
+      </div>
+      <div class="lesson-body">
+        <div class="lesson-content">
+          <div class="lesson-section-title">Overview</div>
+          <p class="lesson-text">${l.content.intro}</p>
+          <div class="lesson-section-title">Key Concepts</div>
+          <ul class="lesson-points">
+            ${l.content.points.map(p => `<li>${p}</li>`).join('')}
+          </ul>
+          ${l.content.concept ? `
+            <div class="concept-box">
+              <div class="concept-label">${l.content.concept.label}</div>
+              <p class="concept-text">${l.content.concept.text}</p>
+            </div>` : ''}
+          ${l.promptBuilder ? buildPromptBuilder(l.promptBuilder, mi, li) : ''}
+          ${l.quiz ? buildQuiz(l.quiz, mi, li) : ''}
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// ─────────────────────────────────────────
+// BUILD PROMPT BUILDER
+// ─────────────────────────────────────────
+function buildPromptBuilder(pb, mi, li) {
+  const id = 'pb-' + mi + '-' + li;
+  window._pbFields[id] = pb.fields;
+  return `
+    <div class="prompt-builder" style="margin-top:20px">
+      <div class="pb-header">
+        <div class="pb-title">🛠️ ${pb.title}</div>
+        <div class="pb-badge">Interactive</div>
+      </div>
+      <div class="pb-body">
+        ${pb.fields.map(function(f) {
+          if (f.type === 'select') {
+            return '<div class="pb-field"><div class="pb-label">' + f.label + ' <span class="pb-label-tag">' + f.tag + '</span></div><select class="pb-select" id="' + id + '-' + f.id + '">' + f.options.map(function(o){ return '<option>' + o + '</option>'; }).join('') + '</select></div>';
+          } else if (f.type === 'textarea') {
+            return '<div class="pb-field"><div class="pb-label">' + f.label + ' <span class="pb-label-tag">' + f.tag + '</span></div><textarea class="pb-textarea" id="' + id + '-' + f.id + '" placeholder="' + f.placeholder + '"></textarea></div>';
+          } else {
+            return '<div class="pb-field"><div class="pb-label">' + f.label + ' <span class="pb-label-tag">' + f.tag + '</span></div><input class="pb-input" type="text" id="' + id + '-' + f.id + '" placeholder="' + f.placeholder + '"/></div>';
+          }
+        }).join('')}
+        <button class="pb-btn" onclick="generatePrompt('${id}')">Generate My Claude Prompt →</button>
+        <div class="pb-output" id="${id}-output"></div>
+      </div>
+    </div>
+  `;
+}
+
+// ─────────────────────────────────────────
+// BUILD QUIZ
+// ─────────────────────────────────────────
+function buildQuiz(quiz, mi, li) {
+  const id = 'quiz-' + mi + '-' + li;
+  window._quizData[id] = {
+    correct: quiz.correct,
+    feedback: quiz.feedback,
+    options: quiz.options
+  };
+  return `
+    <div class="quiz-box" style="margin-top:20px">
+      <div class="quiz-header">
+        <div class="quiz-header-title">🎯 Knowledge Check</div>
+      </div>
+      <div class="quiz-body">
+        <div class="quiz-question">${quiz.question}</div>
+        <div class="quiz-options" id="${id}-options">
+          ${quiz.options.map(function(o, i) {
+            return '<div class="quiz-option" id="' + id + '-opt-' + i + '" onclick="selectAnswer(\'' + id + '\',' + i + ')"><input type="radio" name="' + id + '" style="pointer-events:none"/> ' + o + '</div>';
+          }).join('')}
+        </div>
+        <button class="quiz-btn" onclick="checkAnswer('${id}')">Check Answer</button>
+        <div class="quiz-feedback" id="${id}-feedback"></div>
+      </div>
+    </div>
+  `;
+}
+
+// ─────────────────────────────────────────
+// QUIZ FUNCTIONS
+// ─────────────────────────────────────────
+var selectedAnswers = {};
+
+function selectAnswer(id, idx) {
+  selectedAnswers[id] = idx;
+  var options = document.querySelectorAll('#' + id + '-options .quiz-option');
+  for (var i = 0; i < options.length; i++) {
+    options[i].classList.remove('selected', 'correct', 'incorrect');
+    if (i === idx) options[i].classList.add('selected');
+    var radio = options[i].querySelector('input[type=radio]');
+    if (radio) radio.checked = (i === idx);
+  }
+}
+
+function checkAnswer(id) {
+  var data = window._quizData[id];
+  if (!data) { console.error('No quiz data for', id); return; }
+  var selected = selectedAnswers[id];
+  if (selected === undefined || selected === null) {
+    alert('Please select an answer first!');
+    return;
+  }
+  var correct = data.correct;
+  var isCorrect = (selected === correct);
+  var options = document.querySelectorAll('#' + id + '-options .quiz-option');
+  for (var i = 0; i < options.length; i++) {
+    options[i].classList.remove('selected', 'correct', 'incorrect');
+    if (i === correct) {
+      options[i].classList.add('correct');
+    } else if (i === selected && !isCorrect) {
+      options[i].classList.add('incorrect');
+    }
+  }
+  var fb = document.getElementById(id + '-feedback');
+  if (fb) {
+    if (isCorrect) {
+      fb.innerHTML = '<strong>✓ Correct!</strong> ' + data.feedback;
+      fb.className = 'quiz-feedback correct visible';
+    } else {
+      fb.innerHTML = '<strong>✗ Not quite.</strong> ' + data.feedback + '<br/><br/><strong>✓ The correct answer is:</strong> ' + data.options[correct];
+      fb.className = 'quiz-feedback incorrect visible';
+    }
+  }
+}
+
+// ─────────────────────────────────────────
+// PROMPT GENERATOR
+// ─────────────────────────────────────────
+function generatePrompt(id) {
+  var fields = window._pbFields[id];
+  if (!fields) { alert('Something went wrong. Please refresh.'); return; }
+  var values = {};
+  for (var i = 0; i < fields.length; i++) {
+    var el = document.getElementById(id + '-' + fields[i].id);
+    values[fields[i].id] = el ? el.value.trim() : '';
+  }
+  var lines = [];
+  var role = values.role || values.jobtitle || '';
+  lines.push('You are ' + (role || 'an experienced HR professional') + '.\n');
+  if (values.context || values.company) lines.push('Context: ' + (values.context || values.company) + '\n');
+  if (values.task || values.keyresps) lines.push('Task: ' + (values.task || values.keyresps) + '\n');
+  if (values.constraints || values.musthave) lines.push('Constraints / Requirements: ' + (values.constraints || values.musthave) + '\n');
+  if (values.format || values.jdtone || values.tone) lines.push('Format / Tone: ' + (values.format || values.jdtone || values.tone) + '\n');
+  if (values.client) lines.push('Client: ' + values.client + '\n');
+  if (values.problem) lines.push('Core Problem: ' + values.problem + '\n');
+  if (values.approach) lines.push('Proposed Approach: ' + values.approach + '\n');
+  if (values.fee) lines.push('Investment: ' + values.fee + '\n');
+  lines.push('\nPlease produce a professional, detailed, well-structured output based on the above.');
+  var out = document.getElementById(id + '-output');
+  if (out) {
+    out.textContent = lines.join('\n').trim();
+    out.classList.add('visible');
+    out.scrollIntoView({ behavior:'smooth', block:'nearest' });
+  }
+}
+
+// ─────────────────────────────────────────
+// NAV & MODULE FUNCTIONS
+// ─────────────────────────────────────────
+function toggleLesson(mi, li) {
+  var card = document.getElementById('lesson-' + mi + '-' + li);
+  card.classList.toggle('open');
+  var nav = document.getElementById('lesson-nav-' + mi + '-' + li);
+  if (nav) nav.classList.toggle('active', card.classList.contains('open'));
+}
+
+function scrollToLesson(e, mi, li) {
+  e.stopPropagation();
+  goToModule(mi);
+  setTimeout(function() {
+    var el = document.getElementById('lesson-' + mi + '-' + li);
+    if (el) {
+      el.scrollIntoView({ behavior:'smooth', block:'start' });
+      if (!el.classList.contains('open')) el.querySelector('.lesson-header').click();
+    }
+  }, 100);
+}
+
+function goToModule(idx) {
+  var pages = document.querySelectorAll('.module-page');
+  var navItems = document.querySelectorAll('.module-nav-item');
+  for (var i = 0; i < pages.length; i++) pages[i].classList.remove('active');
+  for (var i = 0; i < navItems.length; i++) navItems[i].classList.remove('active');
+  document.getElementById('module-' + idx).classList.add('active');
+  document.getElementById('nav-item-' + idx).classList.add('active');
+  currentModule = idx;
+  document.getElementById('main-content').scrollTop = 0;
+}
+
+function completeModule(idx) {
+  completedModules.add(idx);
+  var navItem = document.getElementById('nav-item-' + idx);
+  navItem.classList.add('completed');
+  var num = document.getElementById('nav-num-' + idx);
+  if (num) num.textContent = '✓';
+  updateProgress();
+}
+
+function updateProgress() {
+  var pct = Math.round((completedModules.size / modules.length) * 100);
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('progress-pct').textContent = pct + '%';
+}
+
+// ─────────────────────────────────────────
+// CERTIFICATE FUNCTIONS
+// ─────────────────────────────────────────
+function showCertificate() {
+  completeModule(modules.length - 1);
+  var overlay = document.getElementById('cert-overlay');
+  overlay.classList.add('visible');
+  var now = new Date();
+  var dateStr = now.toLocaleDateString('en-GB', { day:'numeric', month:'long', year:'numeric' });
+  var dateEl = document.getElementById('cert-date');
+  if (dateEl) dateEl.textContent = 'Issued on ' + dateStr;
+}
+
+function closeCertificate() {
+  document.getElementById('cert-overlay').classList.remove('visible');
+}
+
+function updateCertName(val) {
+  var el = document.getElementById('cert-display-name');
+  if (el) el.textContent = val.trim() || 'Your Name Here';
+}
+
+function downloadCertificate() {
+  var name = document.getElementById('cert-name-input').value.trim() || 'Graduate';
+  var now = new Date();
+  var dateStr = now.toLocaleDateString('en-GB', { day:'numeric', month:'long', year:'numeric' });
+  var win = window.open('', '_blank');
+  win.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"/><title>Certificate of Completion</title><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/><style>*{margin:0;padding:0;box-sizing:border-box;}body{background:#f5f7ff;display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:\'DM Sans\',sans-serif;}.cert{width:800px;padding:70px 64px;background:linear-gradient(135deg,#f5f7ff 0%,#fff 50%,#f5f7ff 100%);border:3px solid #1a1a2e;position:relative;text-align:center;}.cert::before{content:\'\';position:absolute;inset:10px;border:1px solid #f59e0b;pointer-events:none;}.corner{position:absolute;width:28px;height:28px;border-color:#f59e0b;border-style:solid;}.tl{top:18px;left:18px;border-width:3px 0 0 3px;}.tr{top:18px;right:18px;border-width:3px 3px 0 0;}.bl{bottom:18px;left:18px;border-width:0 0 3px 3px;}.br{bottom:18px;right:18px;border-width:0 3px 3px 0;}.logo{font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#f59e0b;margin-bottom:32px;}.headline{font-family:\'Playfair Display\',serif;font-size:14px;color:#64748b;letter-spacing:3px;text-transform:uppercase;margin-bottom:10px;}.presents{font-family:\'Playfair Display\',serif;font-size:13px;color:#94a3b8;font-style:italic;margin-bottom:28px;}.recipient{font-family:\'Playfair Display\',serif;font-size:48px;font-weight:700;color:#1a1a2e;border-bottom:2px solid #f59e0b;padding-bottom:14px;display:inline-block;margin-bottom:20px;}.desc{font-size:14px;color:#475569;line-height:1.7;margin:16px auto;max-width:480px;}.course{font-family:\'Playfair Display\',serif;font-size:22px;font-weight:700;color:#0f3460;margin:14px 0;}.date{font-size:12px;color:#94a3b8;margin-top:28px;letter-spacing:1px;}.sig{margin-top:36px;display:flex;justify-content:center;}.sig-line{width:160px;height:1px;background:#1a1a2e;margin:0 auto 8px;}.sig-name{font-family:\'Playfair Display\',serif;font-size:14px;font-weight:700;color:#1a1a2e;}.sig-role{font-size:10px;color:#94a3b8;letter-spacing:1.5px;text-transform:uppercase;margin-top:2px;}@media print{body{background:white;}}</style></head><body><div class="cert"><div class="corner tl"></div><div class="corner tr"></div><div class="corner bl"></div><div class="corner br"></div><div class="logo">Claude for HR &middot; estelleverny.com</div><div class="headline">Certificate of Completion</div><div class="presents">This certifies that</div><div class="recipient">' + name + '</div><div class="desc">has successfully completed all 6 modules of</div><div class="course">The Claude for HR Professionals Course</div><div class="desc">covering AI-powered Talent Acquisition, People Analytics,<br/>Learning &amp; Development, Organizational Development, and HR Consulting.</div><div class="date">Issued on ' + dateStr + '</div><div class="sig"><div><div class="sig-line"></div><div class="sig-name">Estelle P. Verny</div><div class="sig-role">Course Creator</div></div></div></div><script>setTimeout(function(){window.print();},800);<\/script></body></html>');
+  win.document.close();
+}
+
+document.addEventListener('click', function(e) {
+  var overlay = document.getElementById('cert-overlay');
+  if (e.target === overlay) closeCertificate();
+});
+
+// ─────────────────────────────────────────
+// INIT
+// ─────────────────────────────────────────
+buildNav();
+buildModules();
+</script>
+</body>
+</html>
