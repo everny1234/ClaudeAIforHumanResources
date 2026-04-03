@@ -680,9 +680,9 @@ const modules = [
   {
     id:2, title:"Talent Acquisition", subtitle:"From Job Post to Offer Letter",
     duration:"45 min", tag:"Recruiting",
-    desc:"Transform your entire recruitment workflow using Claude. Write compelling job descriptions, build structured interview guides, audit for bias, and draft candidate communications.",
+    desc:"Transform your entire recruitment workflow using Claude. Write compelling job descriptions (JDs), build structured interview guides, audit for bias, and draft candidate communications.",
     objectives:[
-      {icon:"📝",title:"Write Compelling Job Descriptions",desc:"Create JDs that attract the right candidates and reflect your employer brand authentically."},
+      {icon:"📝",title:"Write Compelling Job Descriptions (JDs)",desc:"Create JDs that attract the right candidates and reflect your employer brand authentically."},
       {icon:"🔍",title:"Audit for Bias",desc:"Use Claude to identify and eliminate exclusionary language that limits your talent pool."},
       {icon:"🎯",title:"Build Interview Guides",desc:"Create competency-based interview structures that surface the candidates who will actually succeed."},
       {icon:"✉️",title:"Candidate Communications at Scale",desc:"Draft personalized, professional candidate emails without spending hours on each one."}
@@ -707,8 +707,8 @@ const modules = [
         },
         quiz:{
           question:"Your hiring manager sends you a JD with a single requirements list of 15 items. What is the most important thing to fix?",
-          options:["Reduce the total number of requirements to 5","Split into must-haves and nice-to-haves to avoid discouraging strong candidates","Add more detail to each requirement","Remove all requirements and let candidates self-assess"],
-          correct:1,
+          options:["Reduce the total number of requirements to 5","Add more detail to each requirement","Remove all requirements and let candidates self-assess","Split into must-haves and nice-to-haves to avoid discouraging strong candidates"],
+          correct:3,
           feedback:"Splitting requirements is one of the highest-impact JD improvements you can make. A combined list of 15 items reads as 15 mandatory criteria which significantly reduces applications — especially from underrepresented groups. Separating must-haves from nice-to-haves signals that you are open to strong candidates who do not check every box."
         }
       },
@@ -735,8 +735,8 @@ const modules = [
         },
         quiz:{
           question:"What makes competency-based interviews more legally defensible than traditional interviews?",
-          options:["They are conducted by more experienced interviewers","Every candidate is assessed on the same pre-defined job-relevant criteria with documented evidence","They take longer so more information is gathered","They use standardized psychological assessments"],
-          correct:1,
+          options:["They are conducted by more experienced interviewers","They take longer so more information is gathered","Every candidate is assessed on the same pre-defined job-relevant criteria with documented evidence","They use standardized psychological assessments"],
+          correct:2,
           feedback:"Legal defensibility in hiring comes from consistency and job-relevance. When every candidate answers the same questions assessed against the same criteria and you have documented evidence scores you can demonstrate that your process was fair and role-relevant if challenged. Unstructured interviews leave you exposed."
         }
       }
@@ -768,8 +768,8 @@ const modules = [
         },
         quiz:{
           question:"You present attrition data to the CFO showing 22% annual turnover. They respond: So what do you want me to do about it? What is missing from your presentation?",
-          options:["More detailed breakdowns by department","The financial implication and a specific recommendation","A comparison to industry benchmarks","Historical trend data from previous years"],
-          correct:1,
+          options:["The financial implication and a specific recommendation","More detailed breakdowns by department","A comparison to industry benchmarks","Historical trend data from previous years"],
+          correct:0,
           feedback:"The CFO question reveals that your data had no narrative bridge to action. They need to understand the business cost — the financial implication — and what specifically you are asking them to approve or fund — the recommendation. Always build the So What and Now What layer before presenting to leadership."
         }
       },
@@ -829,8 +829,8 @@ const modules = [
         },
         quiz:{
           question:"A manager asks you to design a 2-hour compliance training that employees will actually remember and use. What is the most important design principle to apply?",
-          options:["Include a quiz at the end to test retention","Design for application — use realistic scenarios and practice not just information delivery","Make the content as comprehensive as possible","Use high-quality video production values"],
-          correct:1,
+          options:["Include a quiz at the end to test retention","Make the content as comprehensive as possible","Design for application — use realistic scenarios and practice not just information delivery","Use high-quality video production values"],
+          correct:2,
           feedback:"Compliance training fails not because employees are not paying attention but because it is designed for information delivery rather than behavior change. Designing for application means using realistic scenarios, having participants practice the correct response, and following up with reinforcement. Claude can build this kind of scenario-based compliance training in minutes."
         }
       },
@@ -857,8 +857,8 @@ const modules = [
         },
         quiz:{
           question:"You are designing a leadership development program. In what order should you approach design and measurement?",
-          options:["Design the program then measure what is easy to measure afterward","Define the Level 4 business outcome first then work backwards to design program and measurement","Measure baseline data then design program to address gaps","Run the program then decide what to measure based on what changed"],
-          correct:1,
+          options:["Define the Level 4 business outcome first then work backwards to design program and measurement","Design the program then measure what is easy to measure afterward","Measure baseline data then design program to address gaps","Run the program then decide what to measure based on what changed"],
+          correct:0,
           feedback:"Always start with Level 4. What business outcome do you need to move? Once you have defined that such as reduce regrettable attrition in managed teams by 15% you work backwards: what behaviors at Level 3 would drive that outcome? What knowledge and skills at Level 2 underpin those behaviors? Then design the program to develop exactly those skills and your measurement plan is already built in."
         }
       }
@@ -918,8 +918,8 @@ const modules = [
         },
         quiz:{
           question:"Your company's stated value is Integrity. An employee notices that a manager who missed targets was promoted anyway due to their relationship with the CEO. What is the culture impact?",
-          options:["Minimal — one incident does not define culture","Significant — employees learn that stated values do not apply to those with power destroying credibility of all stated values","Moderate — it depends on whether employees know about the promotion","Positive — it shows the company values loyalty and relationships"],
-          correct:1,
+          options:["Minimal — one incident does not define culture","Moderate — it depends on whether employees know about the promotion","Positive — it shows the company values loyalty and relationships","Significant — employees learn that stated values do not apply to those with power destroying credibility of all stated values"],
+          correct:3,
           feedback:"Culture is learned through observation of what actually happens not what is written on a wall. When employees see that integrity is selectively applied or that performance accountability does not apply to people with connections they rationally conclude that stated values are aspirational at best and cynically performative at worst. This kind of incident requires visible leadership response to prevent culture erosion."
         }
       }
@@ -961,8 +961,8 @@ const modules = [
         },
         quiz:{
           question:"A prospect says your proposal is too expensive. What is the most effective response?",
-          options:["Reduce your fee to close the deal","Reframe the investment against the cost of the problem you are solving","Add more deliverables to justify the price","Explain your qualifications in more detail"],
-          correct:1,
+          options:["Reduce your fee to close the deal","Add more deliverables to justify the price","Reframe the investment against the cost of the problem you are solving","Explain your qualifications in more detail"],
+          correct:2,
           feedback:"Price objections are almost always framing problems not budget problems. If a client says 8,500 euros is too expensive ask: What is your current attrition costing you annually? When the answer is 200,000 euros your fee looks very different. Claude can help you build the ROI reframe into your proposal so price objections are pre-handled before they arise."
         }
       },
@@ -975,8 +975,8 @@ const modules = [
         },
         quiz:{
           question:"Your LinkedIn post about people analytics gets 12 likes and 3 comments after 24 hours. What is the most likely problem?",
-          options:["The topic is not interesting to your audience","The hook — the first line — did not create enough curiosity to stop the scroll","You do not have enough followers yet","You posted at the wrong time of day"],
-          correct:1,
+          options:["The hook — the first line — did not create enough curiosity to stop the scroll","The topic is not interesting to your audience","You do not have enough followers yet","You posted at the wrong time of day"],
+          correct:0,
           feedback:"On LinkedIn the first 1-2 lines determine whether anyone reads your post because that is all that shows before the see more cut-off. A weak hook that does not create curiosity, challenge an assumption, or promise value means most people scroll past without clicking through. Claude can help you write 5 alternative hooks for any post."
         }
       },
