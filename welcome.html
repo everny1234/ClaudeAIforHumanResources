@@ -234,6 +234,52 @@ p {
 </style>
 </head>
 <body>
+  <!-- EMAIL CAPTURE POPUP -->
+<div class="popup-overlay" id="signup-popup">
+  <div class="popup-box">
+    <span class="popup-emoji">👋</span>
+    <div class="popup-eyebrow">Before You Begin</div>
+    <h2 class="popup-title">Welcome to<br/><em>Claude for HR!</em></h2>
+    <p class="popup-desc">
+      Enter your name and email to access the course. 
+      I'll also send you updates, tips, and future resources 
+      no spam, ever.
+    </p>
+
+    <div class="popup-error" id="popup-error">
+      Please fill in both your name and a valid email address.
+    </div>
+
+    <div class="popup-field">
+      <label>Your Name</label>
+      <input 
+        type="text" 
+        id="popup-name" 
+        placeholder="e.g. Sarah Johnson"
+        autocomplete="name"
+      />
+    </div>
+
+    <div class="popup-field">
+      <label>Email Address</label>
+      <input 
+        type="email" 
+        id="popup-email" 
+        placeholder="e.g. sarah@company.com"
+        autocomplete="email"
+        onkeydown="if(event.key==='Enter') submitPopup()"
+      />
+    </div>
+
+    <button class="popup-btn" onclick="submitPopup()">
+      Access the Course →
+    </button>
+
+    <p class="popup-privacy">
+      🔒 Your details are kept private and never shared with third parties.
+    </p>
+  </div>
+</div>
 <div class="card">
   <span class="emoji">🎉</span>
   <div class="eyebrow">Welcome to the Course</div>
@@ -261,7 +307,7 @@ p {
   </div>
 
   <div class="tip-box">
-    <p><strong>💡 One tip before you start:</strong> Have Claude open in a separate tab as you go through each lesson. The best way to learn is to run the prompts live as you study them — not after.</p>
+    <p><strong>💡 One tip before you start:</strong> Have Claude open in a separate tab as you go through each lesson. The best way to learn is to run the prompts live as you study them!</p>
   </div>
 
   <a href="course.html" class="btn">
@@ -272,5 +318,46 @@ p {
     Made with ❤️ by Estelle P. Verny 
   </div>
 </div>
+  <script>
+function submitPopup() {
+  const name  = document.getElementById('popup-name').value.trim();
+  const email = document.getElementById('popup-email').value.trim();
+  const error = document.getElementById('popup-error');
+
+  // Basic validation
+  if (!name || !email || !email.includes('@') || !email.includes('.')) {
+    error.classList.add('visible');
+    return;
+  }
+
+  error.classList.remove('visible');
+
+  // Send to Formspree so it lands in your inbox
+  fetch('https://formspree.io/f/YOUR_FORM_ID', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      name:    name,
+      email:   email,
+      source:  'Course Welcome Page',
+      date:    new Date().toLocaleDateString('en-GB')
+    })
+  }).catch(function() {
+    // Fail silently — still let them in even if submission fails
+  });
+
+  // Store name for welcome page personalisation
+  localStorage.setItem('studentName', name);
+
+  // Hide popup and show welcome page
+  document.getElementById('signup-popup').style.display = 'none';
+
+  // Personalise the welcome heading if possible
+  const heading = document.querySelector('h1');
+  if (heading) {
+    heading.innerHTML = 'Welcome, ' + name.split(' ')[0] + '!<br/>You\'ve Made a <em>Great Choice.</em>';
+  }
+}
+</script>
 </body>
 </html>
