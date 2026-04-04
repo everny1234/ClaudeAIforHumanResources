@@ -1307,29 +1307,50 @@ function goToModule(idx) {
 
 function completeModule(idx) {
   completedModules.add(idx);
-  var navItem = document.getElementById('nav-item-' + idx);
-  navItem.classList.add('completed');
-  var num = document.getElementById('nav-num-' + idx);
-  if (num) num.textContent = '✓';
+  const navItem = document.getElementById('nav-item-' + idx);
+  if (navItem) {
+    navItem.classList.add('completed');
+    const num = navItem.querySelector('.nav-num');
+    if (num) num.textContent = '✓';
+  }
   updateProgress();
+  if (idx < modules.length - 1) goToModule(idx + 1);
 }
 
-function updateProgress() {
-  var pct = Math.round((completedModules.size / modules.length) * 100);
-  document.getElementById('progress-fill').style.width = pct + '%';
-  document.getElementById('progress-pct').textContent = pct + '%';
-}
-
-// ─────────────────────────────────────────
-// CERTIFICATE FUNCTIONS
-// ─────────────────────────────────────────
 function showCertificate() {
-  completeModule(modules.length - 1);
-  var overlay = document.getElementById('cert-overlay');
-  overlay.classList.add('visible');
-  var now = new Date();
-  var dateStr = now.toLocaleDateString('en-GB', { day:'numeric', month:'long', year:'numeric' });
-  var dateEl = document.getElementById('cert-date');
+  // Check all modules are complete
+  const totalModules = modules.length;
+  const completedCount = completedModules.size;
+
+  if (completedCount < totalModules) {
+    const remaining = totalModules - completedCount;
+    const moduleWord = remaining === 1 ? 'module' : 'modules';
+
+    // Show which modules are still incomplete
+    const incompleteList = [];
+    for (let i = 0; i < totalModules; i++) {
+      if (!completedModules.has(i)) {
+        incompleteList.push('Module ' + (i + 1) + ': ' + modules[i].title);
+      }
+    }
+
+    alert(
+      '🔒 Certificate Locked\n\n' +
+      'You need to complete ' + remaining + ' more ' + moduleWord + ' before unlocking your certificate.\n\n' +
+      'Still to complete:\n' + incompleteList.map(m => '· ' + m).join('\n') + '\n\n' +
+      'Mark each module complete using the ✓ button at the bottom of each page.'
+    );
+    return;
+  }
+
+  // All complete — show certificate
+  const overlay = document.getElementById('cert-overlay');
+  if (overlay) overlay.classList.add('visible');
+  const now = new Date();
+  const dateStr = now.toLocaleDateString('en-GB', {
+    day:'numeric', month:'long', year:'numeric'
+  });
+  const dateEl = document.getElementById('cert-date');
   if (dateEl) dateEl.textContent = 'Issued on ' + dateStr;
 }
 
