@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Welcome — Claude for HR Professionals</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family:'DM Sans',sans-serif;
+  background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);
+  min-height:100vh;
+  display:flex; align-items:center; justify-content:center;
+  padding:24px;
+}
+.card {
+  background:#fff;
+  max-width:640px; width:100%;
+  padding:64px 56px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.card::before {
+  content:'';
+  position:absolute; top:0; left:0; right:0;
+  height:5px;
+  background:linear-gradient(90deg,#f59e0b,#fbbf24);
+}
+.card::after {
+  content:'';
+  position:absolute; bottom:0; left:0; right:0;
+  height:5px;
+  background:linear-gradient(90deg,#0f3460,#1a1a2e);
+}
+.emoji {
+  font-size:64px;
+  margin-bottom:24px;
+  display:block;
+  animation: pop 0.6s ease both;
+}
+@keyframes pop {
+  from { transform:scale(0.5); opacity:0; }
+  to   { transform:scale(1);   opacity:1; }
+}
+.eyebrow {
+  font-size:11px; font-weight:700;
+  letter-spacing:3px; text-transform:uppercase;
+  color:#f59e0b; margin-bottom:16px;
+}
+h1 {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(28px,5vw,42px);
+  font-weight:900; color:#1a1a2e;
+  line-height:1.15; margin-bottom:20px;
+}
+h1 em { font-style:italic; color:#f59e0b; }
+p {
+  font-size:16px; color:#475569;
+  line-height:1.75; margin-bottom:16px;
+  max-width:480px; margin-left:auto; margin-right:auto;
+}
+.highlights {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:12px; margin:32px 0;
+  text-align:left;
+}
+.highlight-item {
+  background:#f5f7ff;
+  border:1px solid #d8e4ff;
+  border-left:3px solid #f59e0b;
+  padding:14px 16px;
+  font-size:13px; color:#1e293b;
+  line-height:1.5;
+}
+.highlight-item strong {
+  display:block; font-size:11px;
+  font-weight:700; letter-spacing:1px;
+  text-transform:uppercase; color:#f59e0b;
+  margin-bottom:4px;
+}
+.tip-box {
+  background:#fffbf0;
+  border:1px solid #fde68a;
+  border-left:4px solid #f59e0b;
+  padding:16px 20px; margin:24px 0;
+  text-align:left;
+}
+.tip-box p {
+  font-size:13px; color:#92400e;
+  margin:0; line-height:1.6;
+}
+.btn {
+  display:inline-block;
+  background:linear-gradient(135deg,#1a1a2e,#0f3460);
+  color:#fff;
+  font-family:'DM Sans',sans-serif;
+  font-size:15px; font-weight:700;
+  padding:18px 48px;
+  text-decoration:none;
+  transition:all 0.25s;
+  margin-top:8px;
+  letter-spacing:0.5px;
+}
+.btn:hover {
+  transform:translateY(-2px);
+  box-shadow:0 8px 24px rgba(15,52,96,0.35);
+}
+.btn span {
+  color:#f59e0b; margin-left:8px;
+}
+.footer-note {
+  margin-top:28px;
+  font-size:12px; color:#94a3b8;
+}
+@media(max-width:520px) {
+  .card { padding:40px 24px; }
+  .highlights { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+<div class="card">
+  <span class="emoji">🎉</span>
+  <div class="eyebrow">Welcome to the Course</div>
+  <h1>Congratulations on Taking<br/>the <em>First Step!</em></h1>
+  <p>You've just joined a small group of HR professionals and students who are serious about mastering AI — before everyone else catches up.</p>
+  <p>This course is practical, hands-on, and built around real HR tasks. No fluff. No theory for theory's sake. Just skills you can use from day one.</p>
+
+  <div class="highlights">
+    <div class="highlight-item">
+      <strong>📚 What's inside</strong>
+      6 modules · 24 lessons · real HR scenarios and interactive exercises
+    </div>
+    <div class="highlight-item">
+      <strong>⏱ Time needed</strong>
+      45 mins per module · complete at your own pace · no deadlines
+    </div>
+    <div class="highlight-item">
+      <strong>🛠️ What you'll build</strong>
+      A real HR toolkit using Claude — prompts, frameworks, and deliverables
+    </div>
+    <div class="highlight-item">
+      <strong>🎓 When you finish</strong>
+      Complete all 6 modules to unlock your certificate of completion for the course 
+    </div>
+  </div>
+
+  <div class="tip-box">
+    <p><strong>💡 One tip before you start:</strong> Have Claude open in a separate tab as you go through each lesson. The best way to learn is to run the prompts live as you study them — not after.</p>
+  </div>
+
+  <a href="course.html" class="btn">
+    Let's Begin Module 1 <span>→</span>
+  </a>
+
+  <div class="footer-note">
+    Made with ❤️ by Estelle P. Verny 
+  </div>
+</div>
+</body>
+</html>
