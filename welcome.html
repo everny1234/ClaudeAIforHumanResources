@@ -236,7 +236,12 @@ p {
 <body>
   <!-- EMAIL CAPTURE POPUP -->
 <div class="popup-overlay" id="signup-popup">
-  <div class="popup-box">
+<div class="popup-box" style="position:relative;">
+  <button 
+    onclick="document.getElementById('signup-popup').style.display='none'"
+    style="position:absolute; top:16px; right:16px; background:none; border:none; font-size:22px; color:#94a3b8; cursor:pointer; line-height:1; padding:4px;">
+    ×
+  </button>
     <span class="popup-emoji">👋</span>
     <div class="popup-eyebrow">Before You Begin</div>
     <h2 class="popup-title">Welcome to<br/><em>Claude for HR!</em></h2>
@@ -337,15 +342,16 @@ function submitPopup() {
   error.classList.remove('visible');
 
   // Send to Formspree so it lands in your inbox
-  fetch('https://formspree.io/f/xgoppvol', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      name:    name,
-      email:   email,
-      source:  'Course Welcome Page',
-      date:    new Date().toLocaleDateString('en-GB')
-    })
+  fetch('https://api.web3forms.com/submit', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    access_key: 'b636b995-099f-4e7a-9854-ba192faefdf3',
+    name: name,
+    email: email,
+    source: 'Course Welcome Page',
+    date: new Date().toLocaleDateString('en-GB')
+  })
   }).catch(function() {
     // Fail silently — still let them in even if submission fails
   });
