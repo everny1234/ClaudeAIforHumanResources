@@ -1117,7 +1117,13 @@
     <h2 class="section-title">Have a question? Or comment? I'd love to hear from you.</h2>
   </div>
   <div style="max-width:720px; margin:0 auto;">
-    <form action="https://formspree.io/f/xgopawbr" method="POST">
+    <form action="https://api.web3forms.com/submit" method="POST">
+  <input type="hidden" name="access_key" value="b636b995-099f-4e7a-9854-ba192faefdf3">
+  <input type="text" name="name" required>
+  <input type="email" name="email" required>
+  <textarea name="message" required></textarea>
+  <button type="submit">Submit Form</button>
+</form>
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
         <div>
           <label style="font-size:12px; font-weight:600; color:#1a1a2e; display:block; margin-bottom:6px;">Name</label>
